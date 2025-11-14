@@ -4,6 +4,7 @@ import { createFilterWrapper, throttleFilter } from '@caikengren/uni-hooks-share
 /**
  * 节流函数，控制函数的执行频率
  * 参考实现 https://vueuse.org/shared/useDebounceFn/
+ * 
  * @function useThrottleFn
  * @param {Function} fn 要被节流的函数
  * @param {Object} [options] 节流配置选项

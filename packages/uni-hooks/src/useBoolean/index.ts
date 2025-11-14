@@ -8,6 +8,7 @@ export interface UseBooleanActions {
 /**
  * 布尔值状态管理
  * 参考实现 https://inhiblabcore.github.io/vue-hooks-plus/hooks/useBoolean
+ * 
  * @function useBoolean
  * @param {boolean} [defaultValue=false] - 默认值，不传默认为false
  * @returns {Array} - 返回一个数组，包含布尔值ref和操作方法
