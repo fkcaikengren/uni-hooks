@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+.vitepress/cache
+*/.vitepress/cache
+playground/node_modules/
+packages/*/node_modules/
+.turbo
+.trae
+

@@ -1,0 +1,46 @@
+{
+  "name": "@caikengren/uni-hooks-shared",
+  "version": "1.0.0",
+  "description": "shared hooks utils",
+  "author": "Gavin Tang",
+  "homepage": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.6.2",
+  "type": "module",
+
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "unpkg": "./dist/index.iife.min.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fkcaikengren/uni-hooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fkcaikengren/uni-hooks/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "vue",
+    "uni-app",
+    "shared utils"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "test:attw": "attw --pack --config-path ../../.attw.json ."
+  },
+  "peerDependencies": {
+    "@dcloudio/uni-app": "^3.0.0-4020420240722002",
+    "vue": "^3.5.0"
+  }
+}

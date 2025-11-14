@@ -1,0 +1,34 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "pmd-use 演示"
+			}
+		},
+		{
+			"path": "pages/basic/index",
+			"style": {
+				"navigationBarTitleText": "基础hooks"
+			}
+		},
+		{
+			"path": "pages/biz/index",
+			"style": {
+				"navigationBarTitleText": "业务hooks"
+			}
+		},
+		{
+			"path": "pages/demo-page-scroll/index",
+			"style": {
+				"navigationBarTitleText": "页面滚动"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}

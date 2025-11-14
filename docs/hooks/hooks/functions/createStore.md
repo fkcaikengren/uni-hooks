@@ -1,0 +1,48 @@
+# Function: createStore()
+
+> **createStore**\<`Fn`\>(`stateFactory`): `Fn`
+
+Defined in: uni-hooks/src/createStore/index.ts:30
+
+**`Function`**
+
+创建一个状态存储，确保状态只被初始化一次
+参考实现 https://vueuse.org/shared/createGlobalState/
+ createStore
+
+## Type Parameters
+
+| Type Parameter |
+| ------ |
+| `Fn` *extends* `AnyFn` |
+
+## Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `stateFactory` | `Fn` | 状态工厂函数，用于创建初始状态 |
+
+## Returns
+
+`Fn`
+
+返回一个函数，调用该函数将返回存储的状态
+
+## Example
+
+```ts
+import { createStore } from '@caikengren/uni-hooks';
+
+const useCounter = createStore(() => {
+  const count = ref(0);
+
+  function increment() {
+    count.value++;
+  }
+
+  return { count, increment };
+});
+
+// 在组件中使用
+const { count, increment } = useCounter();
+```

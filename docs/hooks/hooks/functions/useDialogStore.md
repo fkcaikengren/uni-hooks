@@ -1,0 +1,30 @@
+# Function: useDialogStore()
+
+> **useDialogStore**(): `DialogStore`
+
+Defined in: uni-hooks/src/useDialog/index.ts:56
+
+全局dialog管理仓库，管理通过useDialog注册的Dialog
+
+ useDialogStore
+
+## Returns
+
+`DialogStore`
+
+返回对象
+
+## Example
+
+```ts
+import { useDialogStore } from '@caikengren/uni-hooks';
+
+// 获取全局对话框管理仓库
+const { openDialog, closeDialog } = useDialogStore();
+
+// 打开已注册的对话框
+openDialog('myDialog');
+
+// 关闭已注册的对话框
+closeDialog('myDialog');
+```
