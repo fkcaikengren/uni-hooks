@@ -5,6 +5,5 @@ dist/
 */.vitepress/cache
 playground/node_modules/
 packages/*/node_modules/
-.turbo
-.trae
+.turbo/
 
