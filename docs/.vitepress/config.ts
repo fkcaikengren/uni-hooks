@@ -17,6 +17,9 @@ export default defineConfig({
   title: 'uni-hooks',
   description: 'Vue hooks for uni-app',
   themeConfig: {
+    search: {
+      provider: 'local'
+    },
     nav: [
       { text: 'Guide', link: '/guide/' },
       { text: 'Hooks', link: '/hooks/hooks/' },
