@@ -30,10 +30,18 @@ async function main(){
     run('nr build') // 这里直接打包（按标准CI，这里属于预检查）
     run('npx changeset publish') // P.S 这里在本地就发布了（按标准CI流程，这个publish应该push代码之后发布）
     run('git add .')
-    run(`git commit -m "chore(release): ${version}"`)
+    run(`git commit -m "chore(release): v${version}"`)
     run(`git tag -a v${version} -m "chore(release): v${version}"`)
-    run('git push')
+    run('git push --set-upstream origin release')
     run(`git push origin v${version}`)
+
+    // 合并回到主分支，删除 release 分支
+    run('git checkout main')
+    run('git merge release')
+    run('git push')
+    run('git branch -d release')
+    run('git push origin --delete release')
+
   } catch (e: any) {
     const code = typeof e?.status === 'number' ? e.status : 1
     process.exit(code)
