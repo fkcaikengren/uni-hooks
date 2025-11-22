@@ -1,7 +1,7 @@
 {
   "name": "@caikengren/monorepo",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
   "packageManager": "pnpm@10.6.2",
   "scripts": {
@@ -25,6 +25,8 @@
     "lint": "eslint --cache .",
     "lint:fix": "eslint --cache --fix .",
     "commit": "git-cz",
+    "release:version": "npx changeset add && npx changeset version",
+    "release": "node scripts/release.ts",
     "prepare": "husky"
   },
   "dependencies": {
