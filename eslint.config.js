@@ -29,6 +29,7 @@ export default antfu(
       '**/*.svg',
       '.cursor',
       '.trae',
+      'scripts',
     ],
   },
 
