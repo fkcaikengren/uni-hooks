@@ -49,6 +49,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile # 如果用 npm: npm ci
 
+      - name: Install ni globally
+        run: npm i -g @antfu/ni
+
       - name: Build with VitePress
         run: pnpm docs:build # 确保你的 package.json 中有这个 script，或者是 `npx vitepress build docs`
 
