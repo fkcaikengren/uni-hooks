@@ -2,7 +2,7 @@
 
 > **useDebounceFn**\<`T`\>(`fn`, `ms?`, `options?`): `UseDebounceFnReturn`\<`T`\>
 
-Defined in: uni-hooks/src/useDebounceFn/index.ts:34
+Defined in: [packages/uni-hooks/src/useDebounceFn/index.ts:32](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useDebounceFn/index.ts#L32)
 
 **`Function`**
 
@@ -15,7 +15,7 @@ Defined in: uni-hooks/src/useDebounceFn/index.ts:34
 
 | Type Parameter |
 | ------ |
-| `T` *extends* `Fn` |
+| `T` *extends* [`Fn`](../type-aliases/Fn.md) |
 
 ## Parameters
 
@@ -23,7 +23,7 @@ Defined in: uni-hooks/src/useDebounceFn/index.ts:34
 | ------ | ------ | ------ | ------ |
 | `fn` | `T` | `undefined` | 要被防抖的函数 |
 | `ms?` | `MaybeRefOrGetter`\<`number`\> | `200` | 防抖时间间隔，单位为毫秒，默认为200毫秒 |
-| `options?` | `DebounceFilterOptions` | `{}` | 配置项， |
+| `options?` | [`DebounceFilterOptions`](../interfaces/DebounceFilterOptions.md) | `{}` | 配置项， |
 
 ## Returns
 

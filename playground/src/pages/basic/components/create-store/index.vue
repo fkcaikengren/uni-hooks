@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { onMounted } from 'vue'
+
+import InputConfig from './input-config.vue'
+
+import { useAppStore } from './store/use-app-store'
+
+// 使用 useAppStore
+const { commonInfo, queryHomeInfo, refreshHomeInfo } = useAppStore()
+
+// 页面加载时获取数据
+onMounted(() => {
+  queryHomeInfo()
+})
+</script>
+
 <template>
   <div>
     <!-- 绑定commonInfo中的数据到输入框 -->
@@ -20,28 +36,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { onMounted } from 'vue';
-
-
-import InputConfig from './input-config.vue';
-
-
-import { useAppStore } from './store/use-app-store';
-
-// 使用 useAppStore
-const { commonInfo, queryHomeInfo, refreshHomeInfo } = useAppStore();
-
-// 页面加载时获取数据
-onMounted(() => {
-  queryHomeInfo();
-});
-
-</script>
-
 <style scoped>
-
-
 .info-display {
   margin-top: 20px;
   padding: 10px;
@@ -55,5 +50,4 @@ onMounted(() => {
   justify-content: center;
   align-items: center;
 }
-
 </style>

@@ -35,9 +35,9 @@ data.value = { bar: 'foo' }; //此时立即存入了本地缓存，不同于useS
 
 ## Call Signature
 
-> **useStorageSync**(`key`, `initialValue`, `options?`): `RemovableRef`\<`string`\>
+> **useStorageSync**(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`string`\>
 
-Defined in: uni-hooks/src/useStorageSync/index.ts:66
+Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:71](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorageSync/index.ts#L71)
 
 ### Parameters
 
@@ -49,13 +49,13 @@ Defined in: uni-hooks/src/useStorageSync/index.ts:66
 
 ### Returns
 
-`RemovableRef`\<`string`\>
+[`RemovableRef`](../type-aliases/RemovableRef.md)\<`string`\>
 
 ## Call Signature
 
-> **useStorageSync**(`key`, `initialValue`, `options?`): `RemovableRef`\<`boolean`\>
+> **useStorageSync**(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`boolean`\>
 
-Defined in: uni-hooks/src/useStorageSync/index.ts:71
+Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:76](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorageSync/index.ts#L76)
 
 ### Parameters
 
@@ -67,13 +67,13 @@ Defined in: uni-hooks/src/useStorageSync/index.ts:71
 
 ### Returns
 
-`RemovableRef`\<`boolean`\>
+[`RemovableRef`](../type-aliases/RemovableRef.md)\<`boolean`\>
 
 ## Call Signature
 
-> **useStorageSync**(`key`, `initialValue`, `options?`): `RemovableRef`\<`number`\>
+> **useStorageSync**(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`number`\>
 
-Defined in: uni-hooks/src/useStorageSync/index.ts:76
+Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:81](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorageSync/index.ts#L81)
 
 ### Parameters
 
@@ -85,13 +85,13 @@ Defined in: uni-hooks/src/useStorageSync/index.ts:76
 
 ### Returns
 
-`RemovableRef`\<`number`\>
+[`RemovableRef`](../type-aliases/RemovableRef.md)\<`number`\>
 
 ## Call Signature
 
-> **useStorageSync**\<`T`\>(`key`, `initialValue`, `options?`): `RemovableRef`\<`T`\>
+> **useStorageSync**\<`T`\>(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>
 
-Defined in: uni-hooks/src/useStorageSync/index.ts:82
+Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:87](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorageSync/index.ts#L87)
 
 ### Type Parameters
 
@@ -109,4 +109,4 @@ Defined in: uni-hooks/src/useStorageSync/index.ts:82
 
 ### Returns
 
-`RemovableRef`\<`T`\>
+[`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>

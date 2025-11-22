@@ -1,23 +1,23 @@
-import { ref, unref } from 'vue';
-import { Timeout, UseRequestPlugin } from '../types';
+import type { Timeout, UseRequestPlugin } from '../types'
+import { ref, unref } from 'vue'
 
 const useLoadingDelayPlugin: UseRequestPlugin<unknown, unknown[]> = (inst, { loadingDelay }) => {
-  const delayRef = ref<Timeout>();
+  const delayRef = ref<Timeout>()
 
   const clear = () => {
     if (delayRef.value) {
-      clearTimeout(unref(delayRef.value));
+      clearTimeout(unref(delayRef.value))
 
-      delayRef.value = undefined;
+      delayRef.value = undefined
     }
-  };
+  }
 
   return {
     name: 'loadingDelayPlugin',
     onFinally: () => {
-      clear();
+      clear()
 
-      const delay = unref(loadingDelay);
+      const delay = unref(loadingDelay)
 
       /**
        *
@@ -29,19 +29,19 @@ const useLoadingDelayPlugin: UseRequestPlugin<unknown, unknown[]> = (inst, { loa
       if (delay) {
         inst.setState({
           loading: true,
-        });
+        })
 
         delayRef.value = setTimeout(() => {
           inst.setState({
             loading: false,
-          });
-        }, delay);
+          })
+        }, delay)
       }
     },
     onError: () => {
-      clear();
+      clear()
     },
-  };
-};
+  }
+}
 
-export default useLoadingDelayPlugin;
+export default useLoadingDelayPlugin

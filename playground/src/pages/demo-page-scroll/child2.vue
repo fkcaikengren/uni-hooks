@@ -1,4 +1,6 @@
+<script setup lang="ts">
 
+</script>
 
 <template>
   <div class="content-section">
@@ -14,12 +16,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
-
 <style scoped>
-
 .content-section {
   height: 800px;
   display: flex;
@@ -50,5 +47,4 @@
   color: #c62828;
   border-left: 4px solid #c62828;
 }
-
 </style>

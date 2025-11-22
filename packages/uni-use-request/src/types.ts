@@ -1,12 +1,12 @@
-import { Ref, watch } from 'vue';
-import { CachedData } from './utils/cache';
-import UseRequestFetch from './Fetch';
+import type { Ref, watch } from 'vue'
+import type UseRequestFetch from './Fetch'
+import type { CachedData } from './utils/cache'
 
 export type UseRequestService<TData, TParams extends unknown[]> = (
   ...args: TParams
-) => Promise<TData>;
+) => Promise<TData>
 
-export type UseRequestSubscribe = () => void;
+export type UseRequestSubscribe = () => void
 
 export interface UseRequestFetchState<TData, TParams extends unknown[]> {
   loading: boolean
@@ -44,13 +44,13 @@ export type RequestHook<TData = any, TParams extends any[] = any[]> = (
   service: UseRequestService<TData, TParams>,
   options: UseRequestOptions<TData, TParams, any>,
   plugins: UseRequestPlugin<TData, TParams>[],
-) => useRequestResult<TData, TParams>;
+) => useRequestResult<TData, TParams>
 
 export type UseRequestMiddleware<TData, TParams extends any[]> = (
   useRequestNext: RequestHook<TData, TParams>,
-) => RequestHook<TData, TParams>;
+) => RequestHook<TData, TParams>
 
-export type UseRequestBasicOptions<TData, TParams extends unknown[]> = {
+export interface UseRequestBasicOptions<TData, TParams extends unknown[]> {
   /**
    * Init data.
    */
@@ -63,7 +63,7 @@ export type UseRequestBasicOptions<TData, TParams extends unknown[]> = {
   manual?: boolean
 
   /**
-   * 	The parameters passed to the service at the first default execution
+   * The parameters passed to the service at the first default execution
    */
   defaultParams?: TParams
 
@@ -251,32 +251,32 @@ export type UseRequestBasicOptions<TData, TParams extends unknown[]> = {
   use?: UseRequestMiddleware<TData, TParams>[]
 
   rollbackOnError?: boolean | ((params: TParams) => boolean)
-};
+}
 
 export type UseRequestOptions<
   TData,
   TParams extends any[] = any[],
-  TPlugin = any
+  TPlugin = any,
 > = UseRequestBasicOptions<TData, TParams> & {
   pluginOptions?: TPlugin
-};
+}
 
 export type UseRequestOptionsWithFormatResult<
   TData,
   TParams extends any[] = any[],
   TPlugin = any,
-  SR = any
+  SR = any,
 > = UseRequestOptions<TData, TParams, TPlugin> & {
   formatResult: (res: SR) => TData
-};
+}
 
 export type UseRequestOptionsWithInitialData<
   TData,
   TParams extends any[] = any[],
-  TPlugin = any
+  TPlugin = any,
 > = UseRequestOptions<TData, TParams, TPlugin> & {
   initialData: TData extends infer R ? R : TData
-};
+}
 
 export interface UseRequestPlugin<TData, TParams extends unknown[] = unknown[], TPlugin = any> {
   (
@@ -292,7 +292,7 @@ export interface useRequestResult<
   TData,
   TParams extends unknown[],
   FormatResult = any,
-  Initial = any
+  Initial = any,
 > {
   /**
    * Is the service being executed.
@@ -303,24 +303,24 @@ export interface useRequestResult<
    * Data returned by service.
    */
   data: Readonly<
-  Ref<
-  FormatResult extends false
-    ? Initial extends false
-      ? TData | undefined
-      : TData
-    : FormatResult extends (...args: any[]) => any
-      ? ReturnType<FormatResult> | undefined
-      : FormatResult | undefined
-  >
+    Ref<
+      FormatResult extends false
+        ? Initial extends false
+          ? TData | undefined
+          : TData
+        : FormatResult extends (...args: any[]) => any
+          ? ReturnType<FormatResult> | undefined
+          : FormatResult | undefined
+    >
   >
 
   /**
-   * 	Exception thrown by service.
+   * Exception thrown by service.
    */
   error: Readonly<Ref<Error | undefined>>
 
   /**
-   * params	An array of parameters for the service being executed.
+   * params An array of parameters for the service being executed.
    * For example, you triggered `run(1, 2, 3)`, then params is equal to `[1, 2, 3]`.
    */
   params: Readonly<Ref<TParams | []>>
@@ -356,6 +356,6 @@ export interface useRequestResult<
   mutate: UseRequestFetch<TData, TParams>['mutate']
 }
 
-export type Timeout = ReturnType<typeof setTimeout>;
+export type Timeout = ReturnType<typeof setTimeout>
 
-export type Interval = ReturnType<typeof setInterval>;
+export type Interval = ReturnType<typeof setInterval>

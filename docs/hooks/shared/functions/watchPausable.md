@@ -4,7 +4,7 @@
 
 > **watchPausable**\<`T`, `Immediate`\>(`sources`, `cb`, `options?`): `WatchPausableReturn`
 
-Defined in: packages/uni-hooks-shared/src/watchPausable/index.ts:51
+Defined in: [packages/uni-hooks-shared/src/watchPausable/index.ts:51](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks-shared/src/watchPausable/index.ts#L51)
 
 **`Function`**
 
@@ -23,7 +23,7 @@ Defined in: packages/uni-hooks-shared/src/watchPausable/index.ts:51
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sources` | \[`...T[]`\] | - |
+| `sources` | \[`...T[]`\] | 监听的数据源 |
 | `cb` | `WatchCallback`\<`MapSources`\<`T`\>, `MapOldSources`\<`T`, `Immediate`\>\> | 数据源变化时的回调函数 |
 | `options?` | `WatchPausableOptions`\<`Immediate`\> | 配置选项 |
 
@@ -64,7 +64,7 @@ await nextTick() // Changed to hello!
 
 > **watchPausable**\<`T`, `Immediate`\>(`source`, `cb`, `options?`): `WatchPausableReturn`
 
-Defined in: packages/uni-hooks-shared/src/watchPausable/index.ts:56
+Defined in: [packages/uni-hooks-shared/src/watchPausable/index.ts:56](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks-shared/src/watchPausable/index.ts#L56)
 
 **`Function`**
 
@@ -83,7 +83,7 @@ Defined in: packages/uni-hooks-shared/src/watchPausable/index.ts:56
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `source` | `WatchSource`\<`T`\> | 监听的数据源 |
+| `source` | `WatchSource`\<`T`\> | - |
 | `cb` | `WatchCallback`\<`T`, `Immediate` *extends* `true` ? `T` \| `undefined` : `T`\> | 数据源变化时的回调函数 |
 | `options?` | `WatchPausableOptions`\<`Immediate`\> | 配置选项 |
 
@@ -124,7 +124,7 @@ await nextTick() // Changed to hello!
 
 > **watchPausable**\<`T`, `Immediate`\>(`source`, `cb`, `options?`): `WatchPausableReturn`
 
-Defined in: packages/uni-hooks-shared/src/watchPausable/index.ts:61
+Defined in: [packages/uni-hooks-shared/src/watchPausable/index.ts:61](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks-shared/src/watchPausable/index.ts#L61)
 
 **`Function`**
 
@@ -143,7 +143,7 @@ Defined in: packages/uni-hooks-shared/src/watchPausable/index.ts:61
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `source` | `T` | 监听的数据源 |
+| `source` | `T` | - |
 | `cb` | `WatchCallback`\<`T`, `Immediate` *extends* `true` ? `T` \| `undefined` : `T`\> | 数据源变化时的回调函数 |
 | `options?` | `WatchPausableOptions`\<`Immediate`\> | 配置选项 |
 

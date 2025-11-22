@@ -2,7 +2,7 @@
 
 > **createStore**\<`Fn`\>(`stateFactory`): `Fn`
 
-Defined in: uni-hooks/src/createStore/index.ts:30
+Defined in: [packages/uni-hooks/src/createStore/index.ts:30](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/createStore/index.ts#L30)
 
 **`Function`**
 
@@ -14,7 +14,7 @@ Defined in: uni-hooks/src/createStore/index.ts:30
 
 | Type Parameter |
 | ------ |
-| `Fn` *extends* `AnyFn` |
+| `Fn` *extends* [`AnyFn`](../type-aliases/AnyFn.md) |
 
 ## Parameters
 

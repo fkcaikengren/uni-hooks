@@ -1,8 +1,10 @@
 # Function: useDialog()
 
-> **useDialog**(`options`, `registerName?`): `UseDialogReturn`
+> **useDialog**(`options?`, `registerName?`): [`UseDialogReturn`](../interfaces/UseDialogReturn.md)
 
-Defined in: uni-hooks/src/useDialog/index.ts:111
+Defined in: [packages/uni-hooks/src/useDialog/index.ts:109](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useDialog/index.ts#L109)
+
+**`Function`**
 
 dialog组件管理，接管弹框的打开和关闭
 
@@ -12,12 +14,12 @@ dialog组件管理，接管弹框的打开和关闭
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `options` | `UseDialogOptions` | 配置选项 |
+| `options?` | `UseDialogOptions` | 配置选项 |
 | `registerName?` | `string` \| `symbol` | 注册名，用于全局调用。当不为空时将注册到全局，可以通过useDialogStore来管理弹框 |
 
 ## Returns
 
-`UseDialogReturn`
+[`UseDialogReturn`](../interfaces/UseDialogReturn.md)
 
 返回对象
 

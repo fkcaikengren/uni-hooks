@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const showModal = ref(false)
+const currentDemoTitle = ref('')
+// const currentDemoId = ref(0);
+
+// const demoTitles = {
+// };
+
+function navigateTo(path: string) {
+  uni.navigateTo({
+    url: path,
+  })
+}
+
+// const showDemo = (demoId: number) => {
+//   // 直接设置当前演示ID
+//   currentDemoId.value = demoId;
+//   currentDemoTitle.value = demoTitles[demoId];
+//   showModal.value = true;
+// };
+
+function closeModal() {
+  showModal.value = false
+}
+</script>
+
 <template>
   <view class="container">
     <view class="demo-list">
@@ -22,36 +50,6 @@
     </demo-dialog>
   </view>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-
-const showModal = ref(false);
-const currentDemoTitle = ref('');
-// const currentDemoId = ref(0);
-
-// const demoTitles = {
-// };
-
-
-const navigateTo = (path: string) => {
-  uni.navigateTo({
-    url: path,
-  });
-};
-
-// const showDemo = (demoId: number) => {
-//   // 直接设置当前演示ID
-//   currentDemoId.value = demoId;
-//   currentDemoTitle.value = demoTitles[demoId];
-//   showModal.value = true;
-// };
-
-const closeModal = () => {
-  showModal.value = false;
-};
-</script>
 
 <style scoped>
 .container {
@@ -97,7 +95,6 @@ const closeModal = () => {
 .demo-title:active {
   opacity: 0.7;
 }
-
 
 .modal-content {
   flex: 1;

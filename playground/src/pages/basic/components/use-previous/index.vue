@@ -1,3 +1,12 @@
+<script lang="ts" setup>
+import { usePrevious } from '@caikengren/uni-hooks'
+
+import { useCounter } from './use-counter'
+
+const [counter, { inc, dec }] = useCounter(0)
+const prevCounter = usePrevious(counter)
+</script>
+
 <template>
   <div>
     <p>counter current value：{{ counter }}</p>
@@ -17,13 +26,3 @@
     </button>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { usePrevious } from '@caikengren/uni-hooks';
-
-
-import { useCounter } from './use-counter';
-const [counter, { inc, dec }] = useCounter(0);
-const prevCounter = usePrevious(counter);
-
-</script>

@@ -1,54 +1,55 @@
-import { ref } from 'vue';
-import type { UseRequestPlugin, Timeout } from '../types';
+import type { Timeout, UseRequestPlugin } from '../types'
+import { ref } from 'vue'
 
 const useRetryPlugin: UseRequestPlugin<unknown, unknown[]> = (
   fetchInstance,
   { retryInterval, retryCount },
 ) => {
-  const timerRef = ref<Timeout>();
-  const countRef = ref(0);
+  const timerRef = ref<Timeout>()
+  const countRef = ref(0)
 
-  const triggerByRetry = ref(false);
+  const triggerByRetry = ref(false)
 
   if (!retryCount) {
-    return {};
+    return {}
   }
 
   return {
     name: 'retryPlugin',
     onBefore: () => {
       if (!triggerByRetry.value) {
-        countRef.value = 0;
+        countRef.value = 0
       }
-      triggerByRetry.value = false;
+      triggerByRetry.value = false
 
       if (timerRef.value) {
-        clearTimeout(timerRef.value);
+        clearTimeout(timerRef.value)
       }
     },
     onSuccess: () => {
-      countRef.value = 0;
+      countRef.value = 0
     },
     onError: () => {
-      countRef.value += 1;
+      countRef.value += 1
       if (retryCount === -1 || countRef.value <= retryCount) {
         // Exponential backoff
-        const timeout =          retryInterval ?? Math.min(1000 * 2 ** countRef.value, 30000);
+        const timeout = retryInterval ?? Math.min(1000 * 2 ** countRef.value, 30000)
         timerRef.value = setTimeout(() => {
-          triggerByRetry.value = true;
-          fetchInstance.refresh();
-        }, timeout);
-      } else {
-        countRef.value = 0;
+          triggerByRetry.value = true
+          fetchInstance.refresh()
+        }, timeout)
+      }
+      else {
+        countRef.value = 0
       }
     },
     onCancel: () => {
-      countRef.value = 0;
+      countRef.value = 0
       if (timerRef.value) {
-        clearTimeout(timerRef.value);
+        clearTimeout(timerRef.value)
       }
     },
-  };
-};
+  }
+}
 
-export default useRetryPlugin;
+export default useRetryPlugin

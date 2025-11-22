@@ -2,12 +2,13 @@
 
 > **useBoolean**(`defaultValue?`): \[`Ref`\<`boolean`, `boolean`\>, `UseBooleanActions`\]
 
-Defined in: uni-hooks/src/useBoolean/index.ts:27
+Defined in: [packages/uni-hooks/src/useBoolean/index.ts:27](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useBoolean/index.ts#L27)
 
 **`Function`**
 
 布尔值状态管理
 参考实现 https://inhiblabcore.github.io/vue-hooks-plus/hooks/useBoolean
+
  useBoolean
 
 ## Parameters
@@ -20,7 +21,7 @@ Defined in: uni-hooks/src/useBoolean/index.ts:27
 
 \[`Ref`\<`boolean`, `boolean`\>, `UseBooleanActions`\]
 
-- 返回一个数组，包含布尔值ref和操作方法
+返回一个数组，包含布尔值ref和操作方法
 
 ## Example
 

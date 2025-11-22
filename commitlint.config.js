@@ -19,11 +19,11 @@ export default {
         'test', // 增加测试
         'chore', // 构建过程或辅助工具的变动
         'revert', // 回退
-        'build' // 打包
-      ]
+        'build', // 打包
+      ],
     ],
     // subject 大小写不做校验
-    'subject-case': [0]
+    'subject-case': [0],
   },
   // cz-git 的交互配置（可选，用于定制交互界面）
   prompt: {
@@ -39,9 +39,9 @@ export default {
       footerPrefixsSelect: '选择关联issue前缀（可选）:',
       customFooterPrefix: '输入自定义issue前缀 :',
       footer: '列举关联issue (可选) 例如: #31, #I3244 :\n',
-      confirmCommit: '是否提交或修改commit ?'
+      confirmCommit: '是否提交或修改commit ?',
     },
     // 设置 scope 范围（根据项目模块调整）
-    scopes: ['empty', 'utils', 'config', 'deps']
-  }
+    scopes: ['empty', 'utils', 'config', 'deps'],
+  },
 }

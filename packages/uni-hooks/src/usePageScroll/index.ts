@@ -1,5 +1,4 @@
-
-import { getCurrentInstance } from 'vue';
+import { getCurrentInstance } from 'vue'
 
 /**
  * 页面滚动控制选项接口
@@ -12,15 +11,14 @@ export interface UsePageScrollOptions {
    * @type {number}
    * @default 300
    */
-  duration?: number;
+  duration?: number
 }
 
 /**
  * 页面滚动控制。仅支持在页面组件中使用（不兼容在子组件中使用）提供页面滚动控制功能，可以滚动到指定元素位置。在H5环境使用原生scrollIntoView，在小程序环境使用uni.pageScrollTo实现
- * @param {UsePageScrollOptions} [options={}] - 滚动控制选项
- * @param {number} [options.duration=300] - 滚动动画时长，单位毫秒，仅小程序环境有效
- * @returns {Object} 包含滚动方法的对象
- * @returns {Function} returns.scrollToSelector - 滚动到指定选择器的元素位置
+ * @param {UsePageScrollOptions} [options] - 滚动控制选项
+ * @param {number} [options.duration] - 滚动动画时长，单位毫秒，仅小程序环境有效
+ * @returns {{ scrollToSelector: (selector: string) => void }} 返回对象
  * @example
  * // 基本用法
  * import { usePageScroll } from '@caikengren/uni-hooks';
@@ -47,8 +45,8 @@ export interface UsePageScrollOptions {
  * };
  */
 export function usePageScroll(options: UsePageScrollOptions = {}) {
-  const { duration = 300 } = options;
-  const instance  = getCurrentInstance();
+  const { duration = 300 } = options
+  const instance = getCurrentInstance()
   /**
    * 滚动到指定选择器的元素位置
    * @param {string} selector - CSS选择器
@@ -58,11 +56,11 @@ export function usePageScroll(options: UsePageScrollOptions = {}) {
     if (selector) {
       // #ifdef H5
       // 获取目标元素的位置
-      const targetElement = document.querySelector(selector);
+      const targetElement = document.querySelector(selector)
       targetElement?.scrollIntoView({
         behavior: 'smooth', // 平滑滚动（可选）
         block: 'start', // 定义目标元素与视口顶部的对齐方式（可选）
-      });
+      })
       // #endif
 
       // #ifndef H5
@@ -70,22 +68,23 @@ export function usePageScroll(options: UsePageScrollOptions = {}) {
         .in(instance) // 指定在当前组件内查询
         .select(selector)
         .boundingClientRect((data) => {
-          const rect = Array.isArray(data) ? data[0] : data;
+          const rect = Array.isArray(data) ? data[0] : data
           if (rect?.top) {
             uni.pageScrollTo({
               scrollTop: rect.top, // 使用元素的top值
               duration,
-            });
-          } else {
-            console.log('[info]pmd-use: usePageScroll未找到匹配的元素');
+            })
+          }
+          else {
+            console.log('[info]pmd-use: usePageScroll未找到匹配的元素')
           }
         })
-        .exec();
+        .exec()
       // #endif
     }
-  };
+  }
 
   return {
     scrollToSelector,
-  };
+  }
 }

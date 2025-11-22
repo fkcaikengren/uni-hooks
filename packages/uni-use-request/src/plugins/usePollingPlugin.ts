@@ -1,58 +1,57 @@
-import { unref, ref, watchEffect } from 'vue';
-import type { UseRequestPlugin, Timeout } from '../types';
+import type { VoidFn } from '../../../../types'
+import type { Timeout, UseRequestPlugin } from '../types'
 
-import { onPageShow, onPageHide } from '@dcloudio/uni-app';
-import type { VoidFn } from '../../../../types';
+import { onPageHide, onPageShow } from '@dcloudio/uni-app'
+import { ref, unref, watchEffect } from 'vue'
 
 const usePollingPlugin: UseRequestPlugin<unknown, unknown[]> = (
   fetchInstance,
   { pollingInterval, pollingWhenHidden = true, pollingErrorRetryCount = -1 },
 ) => {
-  let timeouter: Timeout;
-  const delayedPolling = ref<VoidFn | null>(null);
-  const countRef = ref<number>(0);
+  let timeouter: Timeout
+  const delayedPolling = ref<VoidFn | null>(null)
+  const countRef = ref<number>(0)
 
-  const isVisible = ref(false);
+  const isVisible = ref(false)
   onPageShow(() => {
-    isVisible.value = true;
+    isVisible.value = true
     // 当页面可见时，检查是否需要重新
     if (delayedPolling.value) {
-      delayedPolling.value();
-      delayedPolling.value = null;
+      delayedPolling.value()
+      delayedPolling.value = null
     }
-  });
+  })
   onPageHide(() => {
-    isVisible.value = false;
-  });
-
+    isVisible.value = false
+  })
 
   const stopPolling = () => {
     if (timeouter) {
-      clearTimeout(timeouter);
+      clearTimeout(timeouter)
     }
-    delayedPolling.value = null;
-  };
+    delayedPolling.value = null
+  }
 
   watchEffect(() => {
     if (!unref(pollingInterval)) {
-      stopPolling();
+      stopPolling()
     }
-  });
+  })
 
   if (!unref(pollingInterval)) {
-    return {};
+    return {}
   }
 
   return {
     name: 'pollingPlugin',
     onBefore: () => {
-      stopPolling();
+      stopPolling()
     },
     onError: () => {
-      countRef.value += 1;
+      countRef.value += 1
     },
     onSuccess: () => {
-      countRef.value = 0;
+      countRef.value = 0
     },
     onFinally: () => {
       if (
@@ -64,20 +63,22 @@ const usePollingPlugin: UseRequestPlugin<unknown, unknown[]> = (
           // if pollingWhenHidden = false && document is hidden, then stop polling and subscribe revisible
           if (!pollingWhenHidden && !isVisible.value) {
             delayedPolling.value = () => {
-              fetchInstance.refresh();
-            };
-          } else {
-            fetchInstance.refresh();
+              fetchInstance.refresh()
+            }
           }
-        }, unref(pollingInterval));
-      } else {
-        countRef.value = 0;
+          else {
+            fetchInstance.refresh()
+          }
+        }, unref(pollingInterval))
+      }
+      else {
+        countRef.value = 0
       }
     },
     onCancel: () => {
-      stopPolling();
+      stopPolling()
     },
-  };
-};
+  }
+}
 
-export default usePollingPlugin;
+export default usePollingPlugin

@@ -1,4 +1,3 @@
-
 /**
  * 判断一个值是否为字符串类型
  * @internal
@@ -6,7 +5,7 @@
  * @returns 如果值是字符串类型，则返回true；否则返回false
  */
 export function isString(val: unknown): val is string {
-  return typeof val === 'string';
+  return typeof val === 'string'
 }
 
 /**
@@ -17,7 +16,7 @@ export function isString(val: unknown): val is string {
  * @returns 如果值为函数类型，则返回 true，否则返回 false
  */
 export function isFunction<T extends (...args: any[]) => any>(val: any): val is T {
-  return typeof val === 'function';
+  return typeof val === 'function'
 }
 
 /**
@@ -26,7 +25,6 @@ export function isFunction<T extends (...args: any[]) => any>(val: any): val is 
  */
 export function noop() { }
 
-
 /**
  * 延迟执行一段时间
  * @internal
@@ -34,9 +32,8 @@ export function noop() { }
  * @returns 返回一个Promise对象
  */
 export function sleep(ms = 0) {
-  return new Promise<void>(resolve => setTimeout(resolve, ms));
+  return new Promise<void>(resolve => setTimeout(resolve, ms))
 }
-
 
 /**
  * 判断传入的对象是否是Promise类型
@@ -46,9 +43,9 @@ export function sleep(ms = 0) {
  */
 export function isPromise(obj: any): obj is Promise<any> {
   return obj !== null
-         && typeof obj === 'object'
-         && typeof obj.then === 'function'
-         && typeof obj.catch === 'function';
+    && typeof obj === 'object'
+    && typeof obj.then === 'function'
+    && typeof obj.catch === 'function'
 }
 
 /**
@@ -58,6 +55,5 @@ export function isPromise(obj: any): obj is Promise<any> {
  * @returns 如果值为null或undefined，则返回true；否则返回false
  */
 export function isNil(obj: any): obj is null | undefined {
-  return obj === null || obj === undefined;
+  return obj === null || obj === undefined
 }
-

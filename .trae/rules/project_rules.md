@@ -1,6 +1,5 @@
 # uni-hooks 项目规则（Trae Rule）
 
-
 ## 项目概览
 - Monorepo，包管理使用 `pnpm`，任务编排使用 `turbo`。
 - 子包：
@@ -10,7 +9,6 @@
 - 子包下面`type.ts` 定义类型，避免循环依赖，共享类型定义在`packages/uni-hooks-shared/src/types.ts`。
 - 文档站：`docs`（VitePress）。
 - Playground：`playground`是一个uni-app项目（用于示例/演示）。
-
 
 ## 环境要求
 - Node `>= 20`（CI 使用 Node 22.13.1）。
@@ -55,6 +53,7 @@
 - 文档目录：`docs`。
 - 指南首页与导航在 `docs/.vitepress/config.ts` 中维护。
 - 变更涉及文档站 UI 或交互时，必须在开发阶段启动预览并提供可访问链接。
+- 注释生成时，多个返回值，数组使用 `@returns [type1, type2]` , 对象使用 `@returns {{}}`
 
 ## 测试与验证
 - 统一使用 `vitest`：根级配置在 `vitest.config.ts`。
@@ -69,13 +68,11 @@
 - 不添加版权或许可证头（除非明确要求）。
 - 不进行 `git commit`/创建分支（除非用户明确要求）。
 
-
 ## 关键配置文件
 - 根：`tsdown.config.ts`（统一生成构建配置）
 - 子包：`packages/*/tsdown.config.ts`
 - 测试：`vitest.config.ts`
 - 工作空间：`pnpm-workspace.yaml`
-- CI：`.github/workflows/ci.yml`
 - Turbo：`turbo.json`
 
 ## 依赖管理

@@ -1,18 +1,19 @@
-import { ref, reactive, toRefs, onScopeDispose, inject, UnwrapRef, watchEffect, computed, isRef, unref } from 'vue';
-import Fetch from './Fetch';
-import { USEREQUEST_GLOBAL_OPTIONS_PROVIDE_KEY } from './config';
-import {
+import type { UnwrapRef } from 'vue'
+import type {
   UseRequestFetchState,
   UseRequestOptions,
   UseRequestPlugin,
   useRequestResult,
   UseRequestService,
-} from './types';
+} from './types'
+import { computed, inject, isRef, onScopeDispose, reactive, ref, toRefs, unref, watchEffect } from 'vue'
+import { USEREQUEST_GLOBAL_OPTIONS_PROVIDE_KEY } from './config'
+import Fetch from './Fetch'
 
 function isUseRequestFetchState<TData, TParams extends any[]>(state: unknown):
 state is UseRequestFetchState<TData, TParams> {
-  const keys = Object.keys(state as object);
-  return keys.filter(i => ['data', 'loading', 'params', 'error'].includes(i)).length === 4;
+  const keys = Object.keys(state as object)
+  return keys.filter(i => ['data', 'loading', 'params', 'error'].includes(i)).length === 4
 }
 
 function useRequestImplement<TData, TParams extends any[]>(
@@ -24,22 +25,22 @@ function useRequestImplement<TData, TParams extends any[]>(
   const USEREQUEST_GLOBAL_OPTIONS = inject<Record<string, any>>(
     USEREQUEST_GLOBAL_OPTIONS_PROVIDE_KEY,
     {},
-  );
+  )
   // read option
   const { initialData = undefined, manual = false, ready = true, ...rest } = {
     ...(USEREQUEST_GLOBAL_OPTIONS ?? {}),
     ...(options ?? {}),
-  };
+  }
 
   const fetchOptions = {
     manual,
     ready,
     initialData,
     ...rest,
-  };
+  }
 
   // serviceRef store service
-  const serviceRef = ref(service);
+  const serviceRef = ref(service)
 
   // reactive
   const state = reactive<UseRequestFetchState<TData, TParams>>({
@@ -47,58 +48,59 @@ function useRequestImplement<TData, TParams extends any[]>(
     loading: false,
     params: undefined,
     error: undefined,
-  });
+  })
 
   const setState = (currentState: unknown, field?: keyof typeof state) => {
     if (field) {
-      state[field] = currentState as any;
-    } else {
+      state[field] = currentState as any
+    }
+    else {
       if (isUseRequestFetchState<UnwrapRef<TData>, UnwrapRef<TParams>>(currentState)) {
-        state.data = currentState.data;
-        state.loading = currentState.loading;
-        state.error = currentState.error;
-        state.params = currentState.params;
+        state.data = currentState.data
+        state.loading = currentState.loading
+        state.error = currentState.error
+        state.params = currentState.params
       }
     }
-  };
+  }
 
-  const initState = plugins.map(p => p?.onInit?.(fetchOptions)).filter(Boolean);
+  const initState = plugins.map(p => p?.onInit?.(fetchOptions)).filter(Boolean)
   // Fetch Instance
   const fetchInstance = new Fetch<TData, TParams>(
     serviceRef,
     fetchOptions,
     setState,
     Object.assign({}, ...initState, state),
-  );
+  )
 
-
-  fetchInstance.options = fetchOptions;
+  fetchInstance.options = fetchOptions
 
   // run plugins
-  fetchInstance.pluginImpls = plugins.map(p => p(fetchInstance, fetchOptions));
+  fetchInstance.pluginImpls = plugins.map(p => p(fetchInstance, fetchOptions))
 
-  const readyComputed = computed(() => (isRef(ready) ? ready.value : ready));
+  const readyComputed = computed(() => (isRef(ready) ? ready.value : ready))
 
   watchEffect(() => {
     if (!manual) {
-      const params = fetchInstance.state.params || options.defaultParams || [];
+      const params = fetchInstance.state.params || options.defaultParams || []
       // auto collect
       if (readyComputed.value && fetchInstance.options.refreshDeps === true && !!serviceRef.value) {
-        fetchInstance.run(...(params as TParams));
+        fetchInstance.run(...(params as TParams))
       }
     }
-  });
+  })
 
   // manual
   if (!manual && fetchInstance.options.refreshDeps !== true) {
-    const params = fetchInstance.state.params || options.defaultParams || [];
-    if (unref(ready)) fetchInstance.run(...(params as TParams));
+    const params = fetchInstance.state.params || options.defaultParams || []
+    if (unref(ready))
+      fetchInstance.run(...(params as TParams))
   }
 
   // onUnmounted cancel request
   onScopeDispose(() => {
-    fetchInstance.cancel();
-  });
+    fetchInstance.cancel()
+  })
 
   return ({
     ...toRefs(state),
@@ -108,7 +110,7 @@ function useRequestImplement<TData, TParams extends any[]>(
     run: fetchInstance.run.bind(fetchInstance),
     runAsync: fetchInstance.runAsync.bind(fetchInstance),
     mutate: fetchInstance.mutate.bind(fetchInstance),
-  } as unknown) as useRequestResult<TData, TParams>;
+  } as unknown) as useRequestResult<TData, TParams>
 }
 
-export default useRequestImplement;
+export default useRequestImplement

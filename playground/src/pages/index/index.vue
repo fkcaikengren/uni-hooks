@@ -1,3 +1,24 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+
+interface NavItem {
+  title: string
+  desc: string
+  path: string
+}
+
+const navList = ref<NavItem[]>([
+  { title: '基础hook', desc: '', path: '/pages/basic/index' },
+  { title: '业务hook', desc: '', path: '/pages/biz/index' },
+])
+
+function navigateTo(path: string) {
+  uni.navigateTo({
+    url: path,
+  })
+}
+</script>
+
 <template>
   <view class="container">
     <view class="header">
@@ -33,27 +54,6 @@
     </view>
   </view>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-interface NavItem {
-  title: string;
-  desc: string;
-  path: string;
-}
-
-const navList = ref<NavItem[]>([
-  { title: '基础hook', desc: '', path: '/pages/basic/index' },
-  { title: '业务hook', desc: '', path: '/pages/biz/index' },
-]);
-
-const navigateTo = (path: string) => {
-  uni.navigateTo({
-    url: path,
-  });
-};
-</script>
 
 <style scoped>
 .container {

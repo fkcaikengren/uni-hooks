@@ -71,7 +71,7 @@ watchWithFilter(
 
 > **watchWithFilter**\<`T`, `Immediate`\>(`sources`, `cb`, `options?`): `WatchStopHandle`
 
-Defined in: packages/uni-hooks-shared/src/watchWithFilter/index.ts:9
+Defined in: [packages/uni-hooks-shared/src/watchWithFilter/index.ts:10](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks-shared/src/watchWithFilter/index.ts#L10)
 
 ### Type Parameters
 
@@ -96,7 +96,7 @@ Defined in: packages/uni-hooks-shared/src/watchWithFilter/index.ts:9
 
 > **watchWithFilter**\<`T`, `Immediate`\>(`source`, `cb`, `options?`): `WatchStopHandle`
 
-Defined in: packages/uni-hooks-shared/src/watchWithFilter/index.ts:15
+Defined in: [packages/uni-hooks-shared/src/watchWithFilter/index.ts:15](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks-shared/src/watchWithFilter/index.ts#L15)
 
 ### Type Parameters
 
@@ -121,7 +121,7 @@ Defined in: packages/uni-hooks-shared/src/watchWithFilter/index.ts:15
 
 > **watchWithFilter**\<`T`, `Immediate`\>(`source`, `cb`, `options?`): `WatchStopHandle`
 
-Defined in: packages/uni-hooks-shared/src/watchWithFilter/index.ts:20
+Defined in: [packages/uni-hooks-shared/src/watchWithFilter/index.ts:20](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks-shared/src/watchWithFilter/index.ts#L20)
 
 ### Type Parameters
 

@@ -2,12 +2,11 @@
 
 > **tryOnScopeDispose**(`fn`): `boolean`
 
-Defined in: packages/uni-hooks-shared/src/tryOnScopeDispose/index.ts:15
+Defined in: [packages/uni-hooks-shared/src/tryOnScopeDispose/index.ts:13](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks-shared/src/tryOnScopeDispose/index.ts#L13)
 
 **`Function`**
 
-在作用域生命周期内安全调用onScopeDispose，如果不在作用域内则不执行任何操作
-
+在作用域生命周期内安全调用 onScopeDispose，如果不在作用域内则不执行任何操作
  tryOnScopeDispose
 
 ## Parameters
@@ -25,8 +24,7 @@ Defined in: packages/uni-hooks-shared/src/tryOnScopeDispose/index.ts:15
 ## Example
 
 ```ts
-// 基本用法
 tryOnScopeDispose(() => {
-  console.log('清理作用域');
-});
+  console.log('清理作用域')
+})
 ```

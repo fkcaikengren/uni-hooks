@@ -1,16 +1,15 @@
 # Function: useDialogStore()
 
-> **useDialogStore**(): `DialogStore`
+> **useDialogStore**(): [`DialogStore`](../interfaces/DialogStore.md)
 
-Defined in: uni-hooks/src/useDialog/index.ts:56
+Defined in: [packages/uni-hooks/src/useDialog/index.ts:57](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useDialog/index.ts#L57)
 
 全局dialog管理仓库，管理通过useDialog注册的Dialog
-
  useDialogStore
 
 ## Returns
 
-`DialogStore`
+[`DialogStore`](../interfaces/DialogStore.md)
 
 返回对象
 

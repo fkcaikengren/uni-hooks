@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import { useBoolean } from '@caikengren/uni-hooks'
+
+const [flag, { set, toggle }] = useBoolean(true)
+</script>
+
 <template>
   <div>
     <div>{{ flag }}</div>
@@ -21,9 +27,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useBoolean } from '@caikengren/uni-hooks';
-
-const [flag, { set, toggle }] = useBoolean(true);
-</script>

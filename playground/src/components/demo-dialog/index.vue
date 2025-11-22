@@ -1,3 +1,25 @@
+<script setup lang="ts">
+import { defineEmits, defineProps } from 'vue'
+
+defineProps({
+  visible: {
+    type: Boolean,
+    default: false,
+  },
+  title: {
+    type: String,
+    default: '',
+  },
+})
+
+const emit = defineEmits(['update:visible', 'close'])
+
+function close() {
+  emit('update:visible', false)
+  emit('close')
+}
+</script>
+
 <template>
   <view
     v-if="visible"
@@ -21,28 +43,6 @@
     </view>
   </view>
 </template>
-
-<script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
-
-defineProps({
-  visible: {
-    type: Boolean,
-    default: false,
-  },
-  title: {
-    type: String,
-    default: '',
-  },
-});
-
-const emit = defineEmits(['update:visible', 'close']);
-
-const close = () => {
-  emit('update:visible', false);
-  emit('close');
-};
-</script>
 
 <style scoped>
 .demo-dialog-overlay {

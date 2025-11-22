@@ -2,10 +2,9 @@
 
 > **useWindowSize**(): `object`
 
-Defined in: uni-hooks/src/useWindowSize/index.ts:24
+Defined in: [packages/uni-hooks/src/useWindowSize/index.ts:20](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useWindowSize/index.ts#L20)
 
 获取窗口大小信息
-
  useWindowSize
 
 ## Returns

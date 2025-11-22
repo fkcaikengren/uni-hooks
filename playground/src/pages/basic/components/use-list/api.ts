@@ -3,7 +3,7 @@ let mockData = Array.from({ length: 30 }, (_, index) => ({
   id: index + 1,
   title: `列表项 ${index + 1}`,
   content: `这是列表项 ${index + 1} 的内容`,
-}));
+}))
 
 /**
  * 获取资源列表
@@ -17,19 +17,19 @@ export function getResourceList(page = 1, pageSize = 10, keyword = '') {
     setTimeout(() => {
       try {
         // 根据关键词筛选数据
-        let filteredData = mockData;
+        let filteredData = mockData
         if (keyword) {
           filteredData = mockData.filter(item => item.title.toLowerCase().includes(String(keyword).toLowerCase())
-            || item.content.toLowerCase().includes(String(keyword).toLowerCase()));
+            || item.content.toLowerCase().includes(String(keyword).toLowerCase()))
         }
 
         // 计算分页数据
-        const startIndex = (Number(page) - 1) * Number(pageSize);
-        const endIndex = startIndex + Number(pageSize);
-        const list = filteredData.slice(startIndex, endIndex);
+        const startIndex = (Number(page) - 1) * Number(pageSize)
+        const endIndex = startIndex + Number(pageSize)
+        const list = filteredData.slice(startIndex, endIndex)
 
         // 判断是否还有更多数据
-        const is_end = endIndex >= filteredData.length;
+        const is_end = endIndex >= filteredData.length
 
         // 返回请求结果
         resolve({
@@ -42,17 +42,18 @@ export function getResourceList(page = 1, pageSize = 10, keyword = '') {
           },
           message: '请求成功',
           success: true,
-        });
-      } catch (error) {
+        })
+      }
+      catch (error) {
         reject({
           code: 500,
           data: null,
           message: '获取资源列表失败',
           success: false,
-        });
+        })
       }
-    }, 2000); // 模拟2秒的网络延迟
-  });
+    }, 2000) // 模拟2秒的网络延迟
+  })
 }
 
 /**
@@ -70,13 +71,13 @@ export function deleteResource(id) {
             data: null,
             message: '缺少必要参数 id',
             success: false,
-          });
-          return;
+          })
+          return
         }
 
         // 从模拟数据中删除指定id的项
-        const initialLength = mockData.length;
-        mockData = mockData.filter(item => item.id !== Number(id));
+        const initialLength = mockData.length
+        mockData = mockData.filter(item => item.id !== Number(id))
 
         // 检查是否成功删除
         if (mockData.length === initialLength) {
@@ -85,8 +86,8 @@ export function deleteResource(id) {
             data: null,
             message: `未找到 ID 为 ${id} 的资源`,
             success: false,
-          });
-          return;
+          })
+          return
         }
 
         resolve({
@@ -94,15 +95,16 @@ export function deleteResource(id) {
           data: { success: true },
           message: '请求成功',
           success: true,
-        });
-      } catch (error) {
+        })
+      }
+      catch (error) {
         reject({
           code: 500,
           data: null,
           message: '删除资源失败',
           success: false,
-        });
+        })
       }
-    }, 2000); // 模拟2秒的网络延迟
-  });
+    }, 2000) // 模拟2秒的网络延迟
+  })
 }

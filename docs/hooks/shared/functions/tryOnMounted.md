@@ -2,12 +2,11 @@
 
 > **tryOnMounted**(`hook`, `target?`, `options?`): `Promise`\<`void`\>
 
-Defined in: packages/uni-hooks-shared/src/tryOnMounted/index.ts:31
+Defined in: [packages/uni-hooks-shared/src/tryOnMounted/index.ts:29](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks-shared/src/tryOnMounted/index.ts#L29)
 
 **`Function`**
 
 安全的onMounted。如果目标实例不存在会进行重试
-
  tryOnMounted
 
 ## Parameters

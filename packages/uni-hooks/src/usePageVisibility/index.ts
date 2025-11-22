@@ -1,11 +1,9 @@
-import { ref } from 'vue';
-import { onPageShow, onPageHide } from '@dcloudio/uni-app';
+import { onPageHide, onPageShow } from '@dcloudio/uni-app'
+import { ref } from 'vue'
 
 /**
  * 页面可见性管理, 注意：不能在弹框类组件中使用（依赖onPageShow和onPageHide的缘故，如果在初始化没有挂载dom的组件中使用，会无法正常工作）。
  * 解决方案：传递usePageVisibility的visibility响应式变量给其他可能被隐藏的组件
- *
-
  * @function usePageVisibility
  * @returns {Ref<boolean>} 页面是否可见
  * @example
@@ -16,15 +14,15 @@ import { onPageShow, onPageHide } from '@dcloudio/uni-app';
  * });
  */
 export function usePageVisibility() {
-  const isVisible = ref(false);
+  const isVisible = ref(false)
 
   onPageShow(() => {
-    isVisible.value = true;
-  });
+    isVisible.value = true
+  })
 
   onPageHide(() => {
-    isVisible.value = false;
-  });
+    isVisible.value = false
+  })
 
-  return isVisible;
+  return isVisible
 }

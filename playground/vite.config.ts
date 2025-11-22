@@ -1,15 +1,15 @@
-import { defineConfig } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
+import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
-export default defineConfig((mode)=>{
+export default defineConfig((mode) => {
   const packageDir = '../'
   return {
     plugins: [
       uni(),
     ],
     server: {
-      port: 5000, 
-      host: true, 
+      port: 5000,
+      host: true,
     },
     resolve: {
       alias: {

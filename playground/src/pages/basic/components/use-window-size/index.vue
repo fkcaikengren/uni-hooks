@@ -1,3 +1,9 @@
+<script setup>
+import { useWindowSize } from '@caikengren/uni-hooks'
+
+const { isLandscape, windowWidth, windowHeight } = useWindowSize()
+</script>
+
 <template>
   <div class="section">
     <h3 class="section-title">
@@ -7,7 +13,7 @@
       <span class="label">是否横屏：</span>
       <span
         class="value"
-        :class="{ 'active': isLandscape }"
+        :class="{ active: isLandscape }"
       >{{ isLandscape ? '是' : '否' }}</span>
     </div>
     <div class="info-item">
@@ -20,14 +26,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-
-import { useWindowSize } from '@caikengren/uni-hooks';
-
-const { isLandscape, windowWidth, windowHeight } = useWindowSize();
-
-</script>
 
 <style scoped>
 .container {

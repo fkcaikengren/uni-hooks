@@ -1,3 +1,63 @@
+<script setup lang="ts">
+import { usePageVisibility } from '@caikengren/uni-hooks'
+
+// 直接引入组件
+
+import { ref } from 'vue'
+
+import CreateStore from './components/create-store/index.vue'
+import OnPageShowHide from './components/on-page-show-hide/index.vue'
+import UseBoolean from './components/use-boolean/index.vue'
+import UseDebouceFn from './components/use-debounce-fn/index.vue'
+import UseDialog from './components/use-dialog/index.vue'
+import UseList from './components/use-list/index.vue'
+import UsePageVisibility from './components/use-page-visibility/index.vue'
+import UsePrevious from './components/use-previous/index.vue'
+import UseRoute from './components/use-route/index.vue'
+import UseStorage from './components/use-storage/index.vue'
+import UseThrottleFn from './components/use-throttle-fn/index.vue'
+import UseWindowSize from './components/use-window-size/index.vue'
+
+const showModal = ref(false)
+const currentDemoTitle = ref('')
+const currentDemoId = ref(0)
+
+const visibility = usePageVisibility()
+
+const demoTitles = {
+  1: 'createStore',
+  2: 'useThrottleFn',
+  3: 'useDebounceFn',
+  4: 'useBoolean',
+  5: 'usePrevious',
+  6: 'useRoute',
+  7: 'onPageShowHide',
+  8: 'useWindowSize',
+  9: 'usePageVisibility',
+  10: 'useDialog',
+  11: 'usePageScroll',
+  12: 'useList',
+  13: 'useStorage',
+}
+
+function showDemo(demoId: number) {
+  // 直接设置当前演示ID
+  currentDemoId.value = demoId
+  currentDemoTitle.value = demoTitles[demoId]
+  showModal.value = true
+}
+
+function closeModal() {
+  showModal.value = false
+}
+
+function navigateTo(path: string) {
+  uni.navigateTo({
+    url: path,
+  })
+}
+</script>
+
 <template>
   <view class="container">
     <view class="demo-list">
@@ -135,68 +195,6 @@
   </view>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
-
-// 直接引入组件
-
-import { usePageVisibility } from '@caikengren/uni-hooks';
-
-import CreateStore from './components/create-store/index.vue';
-import OnPageShowHide from './components/on-page-show-hide/index.vue';
-import UseBoolean from './components/use-boolean/index.vue';
-import UseDebouceFn from './components/use-debounce-fn/index.vue';
-import UseDialog from './components/use-dialog/index.vue';
-import UseList from './components/use-list/index.vue';
-import UsePageVisibility from './components/use-page-visibility/index.vue';
-import UsePrevious from './components/use-previous/index.vue';
-import UseRoute from './components/use-route/index.vue';
-import UseStorage from './components/use-storage/index.vue';
-import UseThrottleFn from './components/use-throttle-fn/index.vue';
-import UseWindowSize from './components/use-window-size/index.vue';
-
-
-const showModal = ref(false);
-const currentDemoTitle = ref('');
-const currentDemoId = ref(0);
-
-const visibility = usePageVisibility();
-
-const demoTitles = {
-  1: 'createStore',
-  2: 'useThrottleFn',
-  3: 'useDebounceFn',
-  4: 'useBoolean',
-  5: 'usePrevious',
-  6: 'useRoute',
-  7: 'onPageShowHide',
-  8: 'useWindowSize',
-  9: 'usePageVisibility',
-  10: 'useDialog',
-  11: 'usePageScroll',
-  12: 'useList',
-  13: 'useStorage',
-};
-
-const showDemo = (demoId: number) => {
-  // 直接设置当前演示ID
-  currentDemoId.value = demoId;
-  currentDemoTitle.value = demoTitles[demoId];
-  showModal.value = true;
-};
-
-const closeModal = () => {
-  showModal.value = false;
-};
-
-const navigateTo = (path: string) => {
-  uni.navigateTo({
-    url: path,
-  });
-};
-
-</script>
-
 <style scoped>
 .container {
   padding: 20px;
@@ -241,7 +239,6 @@ const navigateTo = (path: string) => {
 .demo-title:active {
   opacity: 0.7;
 }
-
 
 .modal-content {
   flex: 1;

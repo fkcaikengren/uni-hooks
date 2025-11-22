@@ -4,7 +4,6 @@
 
 响应式的本地缓存hook（异步），支持小程序和H5环境
 参考实现 https://github.com/uni-helper/uni-use
-
  useStorage
 
 ## Param
@@ -65,9 +64,9 @@ data.value = { foo: 'baz' };
 
 ## Call Signature
 
-> **useStorage**\<`T`\>(`key`, `initialValue?`, `options?`): `RemovableRef`\<`T`\>
+> **useStorage**\<`T`\>(`key`, `initialValue?`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>
 
-Defined in: uni-hooks/src/useStorage/index.ts:169
+Defined in: [packages/uni-hooks/src/useStorage/index.ts:162](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorage/index.ts#L162)
 
 ### Type Parameters
 
@@ -85,13 +84,13 @@ Defined in: uni-hooks/src/useStorage/index.ts:169
 
 ### Returns
 
-`RemovableRef`\<`T`\>
+[`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>
 
 ## Call Signature
 
-> **useStorage**\<`T`\>(`key`, `initialValue`, `options?`): `RemovableRef`\<`T`\>
+> **useStorage**\<`T`\>(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>
 
-Defined in: uni-hooks/src/useStorage/index.ts:175
+Defined in: [packages/uni-hooks/src/useStorage/index.ts:168](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorage/index.ts#L168)
 
 ### Type Parameters
 
@@ -109,4 +108,4 @@ Defined in: uni-hooks/src/useStorage/index.ts:175
 
 ### Returns
 
-`RemovableRef`\<`T`\>
+[`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>

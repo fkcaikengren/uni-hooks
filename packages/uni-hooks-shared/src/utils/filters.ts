@@ -1,9 +1,7 @@
-import type { MaybeRefOrGetter, Ref, ShallowRef } from 'vue';
-import { isRef, toRef, readonly, toValue } from 'vue';
-import { noop } from './base';
-import type { Fn, AnyFn, Promisify, ArgumentsType, TimerHandle } from '../types.ts';
-
-
+import type { MaybeRefOrGetter, Ref, ShallowRef } from 'vue'
+import type { AnyFn, ArgumentsType, Fn, Promisify, TimerHandle } from '../types.ts'
+import { isRef, readonly, toRef, toValue } from 'vue'
+import { noop } from './base'
 
 export interface Pausable {
   /**
@@ -61,10 +59,10 @@ export interface FunctionWrapperOptions<Args extends any[] = any[], This = any> 
  */
 export type EventFilter<Args extends any[] = any[], This = any, Invoke extends AnyFn = AnyFn> = ((
   invoke: Invoke,
-  options: FunctionWrapperOptions<Args, This>
-) => ReturnType<Invoke> | Promisify<ReturnType<Invoke>>) &  {
-  cancel?: () => void;
-};
+  options: FunctionWrapperOptions<Args, This>,
+) => ReturnType<Invoke> | Promisify<ReturnType<Invoke>>) & {
+  cancel?: () => void
+}
 
 /**
  * ConfigurableEventFilter
@@ -105,80 +103,85 @@ export function createFilterWrapper<T extends AnyFn>(filter: EventFilter, fn: T)
       // make sure it's a promise
       Promise.resolve(filter(() => fn.apply(this, args), { fn, thisArg: this, args }))
         .then(resolve)
-        .catch(reject);
-    });
+        .catch(reject)
+    })
   }
 
   // 如果filter有cancel方法，则将其添加到wrapper上
   if (typeof filter.cancel === 'function') {
-    wrapper.cancel = filter.cancel;
+    wrapper.cancel = filter.cancel
   }
 
-  return wrapper;
+  return wrapper
 }
 
-export const bypassFilter: EventFilter = invoke => invoke();
+export const bypassFilter: EventFilter = invoke => invoke()
 
 /**
  * 防抖
  * @internal
  */
 export function debounceFilter(ms: MaybeRefOrGetter<number>, options: DebounceFilterOptions = {}) {
-  let timer: TimerHandle;
-  let maxTimer: TimerHandle;
-  let lastRejector: AnyFn = noop;
+  let timer: TimerHandle
+  let maxTimer: TimerHandle
+  let lastRejector: AnyFn = noop
 
   const _clearTimeout = (timer: TimerHandle) => {
-    clearTimeout(timer);
-    lastRejector();
-    lastRejector = noop;
-  };
+    clearTimeout(timer)
+    lastRejector()
+    lastRejector = noop
+  }
 
-  let lastInvoker: () => void;
+  let lastInvoker: () => void
 
   const filter: EventFilter = (invoke) => {
-    const duration = toValue(ms);
-    const maxDuration = toValue(options.maxWait);
+    const duration = toValue(ms)
+    const maxDuration = toValue(options.maxWait)
 
-    if (timer) _clearTimeout(timer);
+    if (timer)
+      _clearTimeout(timer)
 
     if (duration <= 0 || (maxDuration !== undefined && maxDuration <= 0)) {
       if (maxTimer) {
-        _clearTimeout(maxTimer);
-        maxTimer = undefined;
+        _clearTimeout(maxTimer)
+        maxTimer = undefined
       }
-      return Promise.resolve(invoke());
+      return Promise.resolve(invoke())
     }
 
     return new Promise((resolve, reject) => {
-      lastRejector = options.rejectOnCancel ? reject : resolve;
-      lastInvoker = invoke;
+      lastRejector = options.rejectOnCancel ? reject : resolve
+      lastInvoker = invoke
       // Create the maxTimer. Clears the regular timer on invoke
       if (maxDuration && !maxTimer) {
         maxTimer = setTimeout(() => {
-          if (timer) _clearTimeout(timer);
-          maxTimer = undefined;
-          resolve(lastInvoker());
-        }, maxDuration);
+          if (timer)
+            _clearTimeout(timer)
+          maxTimer = undefined
+          resolve(lastInvoker())
+        }, maxDuration)
       }
 
       // Create the regular timer. Clears the max timer on invoke
       timer = setTimeout(() => {
-        if (maxTimer) _clearTimeout(maxTimer);
-        maxTimer = undefined;
-        resolve(invoke());
-      }, duration);
-    });
-  };
+        if (maxTimer)
+          _clearTimeout(maxTimer)
+        maxTimer = undefined
+        resolve(invoke())
+      }, duration)
+    })
+  }
 
   // 添加cancel方法，用于取消最后一次执行
   filter.cancel = () => {
-    if (timer) _clearTimeout(timer);
-    timer = undefined;
-    if (maxTimer) _clearTimeout(maxTimer);
-    maxTimer = undefined;
-  };
-  return filter;
+    if (timer)
+      _clearTimeout(timer)
+    timer = undefined
+    if (maxTimer)
+      _clearTimeout(maxTimer)
+    maxTimer = undefined
+  }
+  return filter
 }
 
 /**
@@ -208,75 +211,78 @@ export interface ThrottleFilterOptions {
  * @internal
  */
 interface ThrottleFilter {
-  (ms: MaybeRefOrGetter<number>, trailing?: boolean, leading?: boolean, rejectOnCancel?: boolean): EventFilter;
-  (options: ThrottleFilterOptions): EventFilter;
+  (ms: MaybeRefOrGetter<number>, trailing?: boolean, leading?: boolean, rejectOnCancel?: boolean): EventFilter
+  (options: ThrottleFilterOptions): EventFilter
 }
 
 /**
  * throttleFilter
  * @internal
  */
-export const  throttleFilter: ThrottleFilter = (...args: any[]) => {
-  let lastExec = 0;
-  let timer: TimerHandle;
-  let isLeading = true;
-  let lastRejector: AnyFn = noop;
-  let lastValue: any;
-  let ms: MaybeRefOrGetter<number>;
-  let trailing: boolean;
-  let leading: boolean;
-  let rejectOnCancel: boolean;
-  if (!isRef(args[0]) && typeof args[0] === 'object') ({ delay: ms, trailing = true, leading = true, rejectOnCancel = false } = args[0]);
-  else [ms, trailing = true, leading = true, rejectOnCancel = false] = args;
+export const throttleFilter: ThrottleFilter = (...args: any[]) => {
+  let lastExec = 0
+  let timer: TimerHandle
+  let isLeading = true
+  let lastRejector: AnyFn = noop
+  let lastValue: any
+  let ms: MaybeRefOrGetter<number>
+  let trailing: boolean
+  let leading: boolean
+  let rejectOnCancel: boolean
+  if (!isRef(args[0]) && typeof args[0] === 'object')
+    ({ delay: ms, trailing = true, leading = true, rejectOnCancel = false } = args[0])
+  else [ms, trailing = true, leading = true, rejectOnCancel = false] = args
   const clear = () => {
     if (timer) {
-      clearTimeout(timer);
-      timer = undefined;
-      lastRejector();
-      lastRejector = noop;
+      clearTimeout(timer)
+      timer = undefined
+      lastRejector()
+      lastRejector = noop
     }
-  };
+  }
 
   const filter: EventFilter = (_invoke) => {
-    const duration = toValue(ms);
-    const elapsed = Date.now() - lastExec;
-    const invoke = () => lastValue = _invoke();
+    const duration = toValue(ms)
+    const elapsed = Date.now() - lastExec
+    const invoke = () => lastValue = _invoke()
 
-    clear();
+    clear()
 
     if (duration <= 0) {
-      lastExec = Date.now();
-      return invoke();
+      lastExec = Date.now()
+      return invoke()
     }
 
     if (elapsed > duration && (leading || !isLeading)) {
-      lastExec = Date.now();
-      invoke();
-    } else if (trailing) {
+      lastExec = Date.now()
+      invoke()
+    }
+    else if (trailing) {
       lastValue = new Promise((resolve, reject) => {
-        lastRejector = rejectOnCancel ? reject : resolve;
+        lastRejector = rejectOnCancel ? reject : resolve
         timer = setTimeout(() => {
-          lastExec = Date.now();
-          isLeading = true;
-          resolve(invoke());
-          clear();
-        }, Math.max(0, duration - elapsed));
-      });
+          lastExec = Date.now()
+          isLeading = true
+          resolve(invoke())
+          clear()
+        }, Math.max(0, duration - elapsed))
+      })
     }
 
-    if (!leading && !timer) timer = setTimeout(() => isLeading = true, duration);
+    if (!leading && !timer)
+      timer = setTimeout(() => isLeading = true, duration)
 
-    isLeading = false;
-    return lastValue;
-  };
+    isLeading = false
+    return lastValue
+  }
 
   // 添加cancel方法，用于取消最后一次执行
   filter.cancel = () => {
-    clear();
-  };
+    clear()
+  }
 
-  return filter;
-};
+  return filter
+}
 
 /**
  * PausableFilterOptions
@@ -302,20 +308,21 @@ export function pausableFilter(
 ): Pausable & { eventFilter: EventFilter } {
   const {
     initialState = 'active',
-  } = options;
+  } = options
 
-  const isActive = toRef(initialState === 'active');
+  const isActive = toRef(initialState === 'active')
 
   function pause() {
-    isActive.value = false;
+    isActive.value = false
   }
   function resume() {
-    isActive.value = true;
+    isActive.value = true
   }
 
   const eventFilter: EventFilter = (...args) => {
-    if (isActive.value) return extendFilter(...args);
-  };
+    if (isActive.value)
+      return extendFilter(...args)
+  }
 
-  return { isActive: readonly(isActive), pause, resume, eventFilter };
+  return { isActive: readonly(isActive), pause, resume, eventFilter }
 }

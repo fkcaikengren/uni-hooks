@@ -1,47 +1,46 @@
-import { ref, watchEffect, unref } from 'vue';
-import type { UseRequestPlugin } from '../types';
-import { createFilterWrapper, debounceFilter  } from '@caikengren/uni-hooks-shared';
-
+import type { UseRequestPlugin } from '../types'
+import { createFilterWrapper, debounceFilter } from '@caikengren/uni-hooks-shared'
+import { ref, unref, watchEffect } from 'vue'
 
 const useDebouncePlugin: UseRequestPlugin<unknown, unknown[]> = (
   fetchInstance,
   { debounceWait, debounceMaxWait },
 ) => {
-  const debouncedRef = ref<ReturnType<typeof createFilterWrapper>>();
+  const debouncedRef = ref<ReturnType<typeof createFilterWrapper>>()
 
   watchEffect((onInvalidate) => {
     if (unref(debounceWait)) {
-      const _originRunAsync = fetchInstance.runAsync.bind(fetchInstance);
+      const _originRunAsync = fetchInstance.runAsync.bind(fetchInstance)
       debouncedRef.value = createFilterWrapper(
-        debounceFilter(debounceWait || 200, { maxWait: unref(debounceMaxWait)  }),
+        debounceFilter(debounceWait || 200, { maxWait: unref(debounceMaxWait) }),
         (callback: () => void) => {
-          callback();
+          callback()
         },
-      );
+      )
       fetchInstance.runAsync = (...args) => new Promise((resolve, reject) => {
         debouncedRef.value?.(() => {
           _originRunAsync(...args)
             .then(resolve)
-            .catch(reject);
-        });
-      });
+            .catch(reject)
+        })
+      })
       onInvalidate(() => {
-        debouncedRef.value?.cancel();
-        fetchInstance.runAsync = _originRunAsync;
-      });
+        debouncedRef.value?.cancel()
+        fetchInstance.runAsync = _originRunAsync
+      })
     }
-  });
+  })
 
   if (!unref(debounceWait)) {
-    return {};
+    return {}
   }
 
   return {
     name: 'debouncePlugin',
     onCancel: () => {
-      debouncedRef.value?.cancel();
+      debouncedRef.value?.cancel()
     },
-  };
-};
+  }
+}
 
-export default useDebouncePlugin;
+export default useDebouncePlugin

@@ -1,10 +1,8 @@
-import type { MaybeRefOrGetter } from 'vue';
-import type { DebounceFilterOptions } from '@caikengren/uni-hooks-shared';
-import { createFilterWrapper, debounceFilter } from '@caikengren/uni-hooks-shared';
-import type { Fn, PromisifyFn } from '@caikengren/uni-hooks-shared';
+import type { DebounceFilterOptions, Fn, PromisifyFn } from '@caikengren/uni-hooks-shared'
+import type { MaybeRefOrGetter } from 'vue'
+import { createFilterWrapper, debounceFilter } from '@caikengren/uni-hooks-shared'
 
-export type UseDebounceFnReturn<T extends Fn> = PromisifyFn<T>;
-
+export type UseDebounceFnReturn<T extends Fn> = PromisifyFn<T>
 
 /**
  * 防抖函数，控制函数的执行频率
@@ -12,9 +10,9 @@ export type UseDebounceFnReturn<T extends Fn> = PromisifyFn<T>;
  *
  * @function useDebounceFn
  * @param {Function} fn 要被防抖的函数
- * @param {number} [ms=200] 防抖时间间隔，单位为毫秒，默认为200毫秒
- * @param {Object} [options] 配置项，  
- * @param {boolean} [options.rejectOnCancel=false] 如果为true，在取消时会拒绝最后一次调用
+ * @param {number} [ms] 防抖时间间隔，单位为毫秒，默认为200毫秒
+ * @param {object} [options] 配置项，
+ * @param {boolean} [options.rejectOnCancel] 如果为true，在取消时会拒绝最后一次调用
  * @returns {Function} 返回一个新的防抖函数
  *
  * @example
@@ -39,5 +37,5 @@ export function useDebounceFn<T extends Fn>(
   return createFilterWrapper(
     debounceFilter(ms, options),
     fn,
-  );
+  )
 }

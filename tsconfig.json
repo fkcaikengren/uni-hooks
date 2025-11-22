@@ -7,14 +7,14 @@
     "rootDir": ".",
     "module": "esnext",
     "moduleResolution": "Bundler",
+    "paths": {
+      "@caikengren/uni-hooks": ["../packages/uni-hooks/index.ts"],
+    },
     "resolveJsonModule": true,
     "types": [
       "vitest",
       "vitest-browser-vue"
     ],
-    "paths": {
-     "@caikengren/uni-hooks": ["../packages/uni-hooks/index.ts"],
-    },
     "allowImportingTsExtensions": true,
     "strict": true,
     "strictFunctionTypes": true,

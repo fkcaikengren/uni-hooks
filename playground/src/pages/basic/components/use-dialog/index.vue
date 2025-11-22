@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { useDialog } from '@caikengren/uni-hooks'
+
+import { reactive } from 'vue'
+
+import ModuleShare from './module-share.vue'
+
+const assistShareInfo = reactive({
+  invitePostTips: '邀请好友一起来玩游戏吧！',
+  invitePostBackground: 'https://igame-10037599.file.myqcloud.com/pmdOA/pmdOA_XhE7x84Pvd3m.png',
+  inviteId: 'ILG667ed5a3ae8bc078181274c6200b3702',
+  inviteTaskId: 't_ZODxVp6Hk7at',
+  inviteTaskType: 'invitereflow',
+})
+
+const { props, openDialog } = useDialog({
+  modelValueField: 'show', // 双向绑定值
+}, 'inviteDialog')
+
+function handleTaskShare() {
+  openDialog()
+}
+</script>
+
 <template>
   <div>
     <div class="card">
@@ -10,38 +34,9 @@
         </button>
       </div>
     </div>
-   
   </div>
 </template>
 
-<script setup lang="ts">
-import {  reactive } from 'vue';
-
-import {   useDialog } from '@caikengren/uni-hooks';
-
-
-import ModuleShare from './module-share.vue';
-
-
-const assistShareInfo = reactive({
-  invitePostTips: '邀请好友一起来玩游戏吧！',
-  invitePostBackground: 'https://igame-10037599.file.myqcloud.com/pmdOA/pmdOA_XhE7x84Pvd3m.png',
-  inviteId: 'ILG667ed5a3ae8bc078181274c6200b3702',
-  inviteTaskId: 't_ZODxVp6Hk7at',
-  inviteTaskType: 'invitereflow',
-});
-
-const { props, openDialog } = useDialog({
-  modelValueField: 'show', // 双向绑定值
-}, 'inviteDialog');
-
-
-const handleTaskShare = () => {
-  openDialog();
-};
-
-
-</script>
 <style scoped>
 .container {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;

@@ -1,52 +1,49 @@
-type Timer = ReturnType<typeof setTimeout>;
-type CachedKey = string | number;
+type Timer = ReturnType<typeof setTimeout>
+type CachedKey = string | number
 
 export interface CachedData<TData = any, TParams = any> {
-  data: TData;
-  params: TParams;
-  time: number;
+  data: TData
+  params: TParams
+  time: number
 }
 interface RecordData extends CachedData {
-  timer: Timer | undefined;
+  timer: Timer | undefined
 }
 
-const cache = new Map<CachedKey, RecordData>();
+const cache = new Map<CachedKey, RecordData>()
 
-const setCache = (
-  key: CachedKey,
-  cacheTime: number,
-  cachedData: CachedData,
-) => {
-  const currentCache = cache.get(key);
+function setCache(key: CachedKey, cacheTime: number, cachedData: CachedData) {
+  const currentCache = cache.get(key)
   if (currentCache?.timer) {
-    clearTimeout(currentCache.timer);
+    clearTimeout(currentCache.timer)
   }
 
-  let timer: Timer | undefined = undefined;
+  let timer: Timer | undefined
 
   if (cacheTime > -1) {
     timer = setTimeout(() => {
-      cache.delete(key);
-    }, cacheTime);
+      cache.delete(key)
+    }, cacheTime)
   }
 
   cache.set(key, {
     ...cachedData,
     timer,
-  });
-};
+  })
+}
 
-const getCache = (key: CachedKey) => cache.get(key);
+const getCache = (key: CachedKey) => cache.get(key)
 
-const getCacheAll = () => Object.fromEntries(cache.entries());
+const getCacheAll = () => Object.fromEntries(cache.entries())
 
-const clearCache = (key?: string | string[]) => {
+function clearCache(key?: string | string[]) {
   if (key) {
-    const cacheKeys = Array.isArray(key) ? key : [key];
-    cacheKeys.forEach(cacheKey => cache.delete(cacheKey));
-  } else {
-    cache.clear();
+    const cacheKeys = Array.isArray(key) ? key : [key]
+    cacheKeys.forEach(cacheKey => cache.delete(cacheKey))
   }
-};
+  else {
+    cache.clear()
+  }
+}
 
-export { getCache, setCache, clearCache, getCacheAll };
+export { clearCache, getCache, getCacheAll, setCache }

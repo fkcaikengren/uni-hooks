@@ -1,12 +1,8 @@
-import { ref, computed } from 'vue';
-import { createSharedComposable } from '@caikengren/uni-hooks-shared';
-import { tryOnMounted } from '@caikengren/uni-hooks-shared';
-import { tryOnUnmounted } from '@caikengren/uni-hooks-shared';
-
+import { createSharedComposable, tryOnMounted, tryOnUnmounted } from '@caikengren/uni-hooks-shared'
+import { computed, ref } from 'vue'
 
 /**
  * 获取窗口大小信息
-
  * @function useWindowSize
  * @returns {object} 窗口大小信息
  * @returns {Ref<number>} windowWidth 窗口宽度
@@ -22,42 +18,43 @@ import { tryOnUnmounted } from '@caikengren/uni-hooks-shared';
  * console.log(windowWidth.value, windowHeight.value, isLandscape.value);
  */
 export const useWindowSize = createSharedComposable(() => {
-  const windowWidth = ref<number>(0);
-  const windowHeight = ref<number>(0);
+  const windowWidth = ref<number>(0)
+  const windowHeight = ref<number>(0)
 
   // 是否为横屏
-  const isLandscape = computed(() => windowWidth.value > windowHeight.value);
+  const isLandscape = computed(() => windowWidth.value > windowHeight.value)
   // 更新窗口大小信息
   const updateSize = () => {
     try {
       // 获取系统信息
-      const systemInfo = uni.getSystemInfoSync();
+      const systemInfo = uni.getSystemInfoSync()
       // 更新宽度和高度
-      windowWidth.value = systemInfo.windowWidth;
-      windowHeight.value = systemInfo.windowHeight;
-    } catch (error) {
-      console.error('[error]获取系统信息失败:', error);
+      windowWidth.value = systemInfo.windowWidth
+      windowHeight.value = systemInfo.windowHeight
     }
-  };
+    catch (error) {
+      console.error('[error]获取系统信息失败:', error)
+    }
+  }
 
   // 窗口大小变化的回调函数
   const onResize = () => {
-    updateSize();
-  };
+    updateSize()
+  }
 
   tryOnMounted(() => {
-    updateSize();
-    uni.onWindowResize(onResize);
-  });
+    updateSize()
+    uni.onWindowResize(onResize)
+  })
 
   tryOnUnmounted(() => {
     // 组件卸载时移除监听
-    uni.offWindowResize(onResize);
-  });
+    uni.offWindowResize(onResize)
+  })
 
   return {
     windowWidth,
     windowHeight,
     isLandscape,
-  };
-});
+  }
+})

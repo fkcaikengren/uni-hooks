@@ -1,4 +1,12 @@
+<script setup lang="ts">
+import { usePageScroll } from '@caikengren/uni-hooks'
 
+const { scrollToSelector } = usePageScroll()
+
+function scrollToEnd3() {
+  scrollToSelector('#end3')
+}
+</script>
 
 <template>
   <div>
@@ -31,17 +39,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-
-import { usePageScroll } from '@caikengren/uni-hooks';
-
-const { scrollToSelector } = usePageScroll();
-
-const scrollToEnd3 = () => {
-  scrollToSelector('#end3');
-};
-</script>
 
 <style scoped>
 .scroll-demo-container {
@@ -136,7 +133,6 @@ const scrollToEnd3 = () => {
   border-left: 4px solid #ff8f00;
 }
 
-
 .note {
   font-size: 14px;
   color: #f44336;
@@ -144,4 +140,3 @@ const scrollToEnd3 = () => {
   margin: 4px 0;
 }
 </style>
-

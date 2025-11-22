@@ -1,20 +1,17 @@
+import type { EffectScope } from 'vue'
+import type { AnyFn } from '../types.ts'
+import { effectScope, onScopeDispose } from 'vue'
 
-
-import { type EffectScope, effectScope, onScopeDispose } from 'vue';
-import type { AnyFn } from '../types.ts';
-
-export type CreateSharedComposableReturn<Fn extends AnyFn = AnyFn> = Fn;
+export type CreateSharedComposableReturn<Fn extends AnyFn = AnyFn> = Fn
 
 /**
  * 创建共享的可组合函数，确保多个组件之间共享同一个状态实例
-
  * @function createSharedComposable
  * @param {Function} composable 可组合函数，用于创建共享状态
  * @param {Function} [clearEffect] 可选的清理函数，在所有订阅者都销毁时调用
  * @returns {Function} 返回一个函数，调用该函数将返回共享的状态
  *
  * @example
- *
  * import { createSharedComposable } from '@caikengren/uni-hooks';
  * import { ref } from 'vue';
  *
@@ -39,28 +36,28 @@ export type CreateSharedComposableReturn<Fn extends AnyFn = AnyFn> = Fn;
 export function createSharedComposable<Fn extends AnyFn>(
   composable: Fn,
   clearEffect?: () => void,
-): CreateSharedComposableReturn<Fn>  {
-  let subscribers = 0;
-  let state: any;
-  let scope: EffectScope | null;
+): CreateSharedComposableReturn<Fn> {
+  let subscribers = 0
+  let state: any
+  let scope: EffectScope | null
 
   const dispose = () => {
-    subscribers -= 1;
+    subscribers -= 1
     if (scope && subscribers <= 0) {
-      scope.stop();
-      state = null;
-      scope = null;
-      clearEffect?.();
+      scope.stop()
+      state = null
+      scope = null
+      clearEffect?.()
     }
-  };
+  }
 
   return ((...args: any[]) => {
-    subscribers += 1;
+    subscribers += 1
     if (!state) {
-      scope = effectScope(true);
-      state = scope.run(() => composable(...args));
+      scope = effectScope(true)
+      state = scope.run(() => composable(...args))
     }
-    onScopeDispose(dispose);
-    return state;
-  }) as Fn;
+    onScopeDispose(dispose)
+    return state
+  }) as Fn
 }

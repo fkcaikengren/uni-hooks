@@ -1,3 +1,56 @@
+<script setup>
+import { onUnmounted, ref, watch } from 'vue'
+
+// 将 visibility 定义为 props
+const props = defineProps({
+  visibility: {
+    type: Boolean,
+    required: true,
+  },
+})
+const timer = ref(null)
+
+// 打印函数
+function printMessage() {
+  console.log('页面可见性状态:', props.visibility ? '可见' : '不可见', new Date().toLocaleTimeString())
+}
+
+// 启动定时器
+function startTimer() {
+  // 确保不会创建多个定时器
+  if (timer.value) {
+    clearInterval(timer.value)
+  }
+  // 创建新的定时器，每2秒打印一次
+  timer.value = setInterval(printMessage, 2000)
+}
+
+// 停止定时器
+function stopTimer() {
+  if (timer.value) {
+    clearInterval(timer.value)
+    timer.value = null
+  }
+}
+
+// 监听可见性变化
+watch(() => props.visibility, (isVisible) => {
+  if (isVisible) {
+    // 页面变为可见时，启动定时器
+    startTimer()
+  }
+  else {
+    // 页面变为不可见时，停止定时器
+    stopTimer()
+  }
+}, { immediate: true }) // 立即执行一次回调，根据初始可见性状态设置定时器
+
+// 组件卸载时清理定时器
+onUnmounted(() => {
+  stopTimer()
+})
+</script>
+
 <template>
   <div class="section">
     <h3 class="section-title">
@@ -13,67 +66,13 @@
       <span class="label">是否可见：</span>
       <span
         class="value"
-        :class="{ 'active': visibility }"
+        :class="{ active: visibility }"
       >{{ visibility ? '是' : '否' }}</span>
     </div>
   </div>
 </template>
 
-<script setup>
-import { ref, watch, onUnmounted } from 'vue';
-
-
-// 将 visibility 定义为 props
-const props = defineProps({
-  visibility: {
-    type: Boolean,
-    required: true,
-  },
-});
-const timer = ref(null);
-
-// 打印函数
-const printMessage = () => {
-  console.log('页面可见性状态:', props.visibility ? '可见' : '不可见', new Date().toLocaleTimeString());
-};
-
-// 启动定时器
-const startTimer = () => {
-  // 确保不会创建多个定时器
-  if (timer.value) {
-    clearInterval(timer.value);
-  }
-  // 创建新的定时器，每2秒打印一次
-  timer.value = setInterval(printMessage, 2000);
-};
-
-// 停止定时器
-const stopTimer = () => {
-  if (timer.value) {
-    clearInterval(timer.value);
-    timer.value = null;
-  }
-};
-
-// 监听可见性变化
-watch(() => props.visibility, (isVisible) => {
-  if (isVisible) {
-    // 页面变为可见时，启动定时器
-    startTimer();
-  } else {
-    // 页面变为不可见时，停止定时器
-    stopTimer();
-  }
-}, { immediate: true }); // 立即执行一次回调，根据初始可见性状态设置定时器
-
-// 组件卸载时清理定时器
-onUnmounted(() => {
-  stopTimer();
-});
-</script>
-
 <style scoped>
-
 .section {
   margin-bottom: 24px;
   padding: 16px;

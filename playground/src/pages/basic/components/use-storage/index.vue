@@ -1,3 +1,94 @@
+<script setup lang="ts">
+import { useStorage, useStorageSync } from '@caikengren/uni-hooks'
+
+import { ref } from 'vue'
+
+// 字符串存储示例
+const stringValue = useStorage('demo-string', '默认字符串')
+function resetString() {
+  stringValue.value = '默认字符串'
+  console.log('字符串已重置')
+}
+
+// 数字存储示例
+const numberValue = useStorage('demo-number', 100)
+function resetNumber() {
+  numberValue.value = 100
+  console.log('数字已重置')
+}
+
+// 布尔值存储示例
+const booleanValue = useStorage('demo-boolean', false)
+function toggleBoolean() {
+  booleanValue.value = !booleanValue.value
+  console.log('布尔值已切换为:', booleanValue.value)
+}
+function resetBoolean() {
+  booleanValue.value = false
+  console.log('布尔值已重置')
+}
+
+// 对象存储示例
+const defaultObject = { name: '测试用户', age: 25, isVIP: false }
+const objectValue = useStorage('demo-object', defaultObject)
+function updateObject() {
+  objectValue.value = {
+    ...objectValue.value,
+    age: objectValue.value.age + 1,
+    lastUpdated: new Date().toISOString(),
+  }
+  console.log('对象已更新:', objectValue.value)
+}
+function resetObject() {
+  objectValue.value = { ...defaultObject }
+  console.log('对象已重置')
+}
+
+// 数组存储示例
+const defaultArray = ['项目1', '项目2', '项目3']
+const arrayValue = useStorage('demo-array', defaultArray)
+function addArrayItem() {
+  arrayValue.value = [...arrayValue.value, `项目${arrayValue.value.length + 1}`]
+  console.log('数组已添加项目:', arrayValue.value)
+}
+function removeArrayItem() {
+  if (arrayValue.value.length > 0) {
+    arrayValue.value = arrayValue.value.slice(0, -1)
+    console.log('数组已删除最后一项:', arrayValue.value)
+  }
+}
+function resetArray() {
+  arrayValue.value = [...defaultArray]
+  console.log('数组已重置')
+}
+
+// 删除存储对象示例
+const removableValue = useStorage('demo-removable', '')
+const removableInputValue = ref('')
+function setRemovableValue() {
+  removableValue.value = removableInputValue.value
+  console.log('可删除值已设置:', removableValue.value)
+}
+function removeValue() {
+  removableValue.value = undefined
+  console.log('存储对象已删除')
+}
+
+// useStorageSync 示例
+const syncValue = useStorageSync('demo-sync', '这是通过 useStorageSync 存储的值')
+function resetSync() {
+  syncValue.value = '这是通过 useStorageSync 存储的值'
+  console.log('同步存储已重置')
+}
+
+// useStorage 异步示例 (替换原来的useStorageAsync)
+const asyncValue = useStorage('demo-async', '这是通过 useStorage 存储的值')
+function resetAsync() {
+  asyncValue.value = '这是通过 useStorage 存储的值'
+  console.log('异步存储已重置')
+}
+</script>
+
 <template>
   <div class="container">
     <div class="card">
@@ -61,7 +152,7 @@
           <span class="label">当前值：</span>
           <span
             class="value"
-            :class="{ 'active': booleanValue }"
+            :class="{ active: booleanValue }"
           >{{ booleanValue ? '是' : '否' }}</span>
         </div>
         <div class="input-group">
@@ -239,97 +330,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-import { useStorage, useStorageSync } from '@caikengren/uni-hooks';
-
-// 字符串存储示例
-const stringValue = useStorage('demo-string', '默认字符串');
-const resetString = () => {
-  stringValue.value = '默认字符串';
-  console.log('字符串已重置');
-};
-
-// 数字存储示例
-const numberValue = useStorage('demo-number', 100);
-const resetNumber = () => {
-  numberValue.value = 100;
-  console.log('数字已重置');
-};
-
-// 布尔值存储示例
-const booleanValue = useStorage('demo-boolean', false);
-const toggleBoolean = () => {
-  booleanValue.value = !booleanValue.value;
-  console.log('布尔值已切换为:', booleanValue.value);
-};
-const resetBoolean = () => {
-  booleanValue.value = false;
-  console.log('布尔值已重置');
-};
-
-// 对象存储示例
-const defaultObject = { name: '测试用户', age: 25, isVIP: false };
-const objectValue = useStorage('demo-object', defaultObject);
-const updateObject = () => {
-  objectValue.value = {
-    ...objectValue.value,
-    age: objectValue.value.age + 1,
-    lastUpdated: new Date().toISOString(),
-  };
-  console.log('对象已更新:', objectValue.value);
-};
-const resetObject = () => {
-  objectValue.value = { ...defaultObject };
-  console.log('对象已重置');
-};
-
-// 数组存储示例
-const defaultArray = ['项目1', '项目2', '项目3'];
-const arrayValue = useStorage('demo-array', defaultArray);
-const addArrayItem = () => {
-  arrayValue.value = [...arrayValue.value, `项目${arrayValue.value.length + 1}`];
-  console.log('数组已添加项目:', arrayValue.value);
-};
-const removeArrayItem = () => {
-  if (arrayValue.value.length > 0) {
-    arrayValue.value = arrayValue.value.slice(0, -1);
-    console.log('数组已删除最后一项:', arrayValue.value);
-  }
-};
-const resetArray = () => {
-  arrayValue.value = [...defaultArray];
-  console.log('数组已重置');
-};
-
-// 删除存储对象示例
-const removableValue = useStorage('demo-removable', '');
-const removableInputValue = ref('');
-const setRemovableValue = () => {
-  removableValue.value = removableInputValue.value;
-  console.log('可删除值已设置:', removableValue.value);
-};
-const removeValue = () => {
-  removableValue.value = undefined;
-  console.log('存储对象已删除');
-};
-
-// useStorageSync 示例
-const syncValue = useStorageSync('demo-sync', '这是通过 useStorageSync 存储的值');
-const resetSync = () => {
-  syncValue.value = '这是通过 useStorageSync 存储的值';
-  console.log('同步存储已重置');
-};
-
-// useStorage 异步示例 (替换原来的useStorageAsync)
-const asyncValue = useStorage('demo-async', '这是通过 useStorage 存储的值');
-const resetAsync = () => {
-  asyncValue.value = '这是通过 useStorage 存储的值';
-  console.log('异步存储已重置');
-};
-</script>
 
 <style scoped>
 .container {

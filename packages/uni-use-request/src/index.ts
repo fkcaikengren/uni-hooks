@@ -1,9 +1,9 @@
-import useRequest from './useRequest';
-import useRequestProvider from './useRequestProvider';
-import { clearCache as clearUseRequestCache } from './utils/cache';
+import useRequestDevToolsPlugin from './devtools'
+import useRequest from './useRequest'
+import useRequestProvider from './useRequestProvider'
 
-import useRequestDevToolsPlugin from './devtools';
+import { clearCache as clearUseRequestCache } from './utils/cache'
 
-export { clearUseRequestCache, useRequestProvider, useRequestDevToolsPlugin };
+export { clearUseRequestCache, useRequestDevToolsPlugin, useRequestProvider }
 
-export default useRequest;
+export default useRequest

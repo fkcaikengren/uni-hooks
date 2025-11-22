@@ -1,3 +1,20 @@
+<script setup lang="ts">
+import { usePageScroll } from '@caikengren/uni-hooks'
+
+import Child2 from './child2.vue'
+import Child from './child.vue'
+
+const { scrollToSelector } = usePageScroll()
+
+// 到指定元素（选择器）
+function scrollToEnd1() {
+  scrollToSelector('#end1')
+}
+function scrollToEnd2() {
+  scrollToSelector('#end2')
+}
+</script>
+
 <template>
   <div class="scroll-demo-container">
     <h2 class="section-title">
@@ -62,25 +79,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-
-import { usePageScroll } from '@caikengren/uni-hooks';
-
-import Child from './child.vue';
-import Child2 from './child2.vue';
-
-const { scrollToSelector } = usePageScroll();
-
-
-// 到指定元素（选择器）
-const scrollToEnd1 = () => {
-  scrollToSelector('#end1');
-};
-const scrollToEnd2 = () => {
-  scrollToSelector('#end2');
-};
-</script>
 
 <style scoped>
 .scroll-demo-container {
@@ -175,4 +173,3 @@ const scrollToEnd2 = () => {
   border-left: 4px solid #ff8f00;
 }
 </style>
-

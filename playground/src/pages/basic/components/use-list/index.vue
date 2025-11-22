@@ -1,3 +1,104 @@
+<script setup>
+import { useList, useRequest } from '@caikengren/uni-hooks'
+
+import { onMounted, ref } from 'vue'
+
+import { deleteResource, getResourceList } from './api'
+
+const PAGE_SIZE = 10
+const searchKeyword = ref('')
+
+// 使用 useList hook 获取列表数据
+const {
+  data,
+  loading,
+  loadingMore,
+  isEnd,
+  loadMore,
+  reload,
+  mutate,
+} = useList(async (data) => {
+  console.log(data, 'data')
+  const page = data ? data.page : 0
+  console.log(page, 'page---')
+  const res = await getResourceList(page + 1, PAGE_SIZE, searchKeyword.value)
+  return res.data
+}, {
+  manual: false, // 自动加载第一页数据
+  showLoadingToast: true,
+  loadingToastMessage: '加载中',
+
+  onSuccess: (result) => {
+    console.log('加载成功', result)
+  },
+  onError: (error) => {
+    console.error('加载失败', error)
+  },
+})
+
+// 加载更多
+function handleLoadMore() {
+  loadMore()
+}
+
+// 搜索功能
+function handleSearch() {
+  reload() // 刷新列表，重新加载第一页
+}
+
+// 刷新功能
+function handleRefresh() {
+  searchKeyword.value = '' // 清空搜索关键词
+  reload() // 刷新列表
+}
+
+// 删除列表项
+const { run: handleDelete } = useRequest(
+  async (id) => {
+    try {
+      await deleteResource(id)
+      // 使用 mutate 更新列表数据
+      if (data.value && data.value.list) {
+        const newList = data.value.list.filter(item => item.id !== id)
+        mutate({
+          ...data.value,
+          list: newList,
+        })
+      }
+    }
+    catch (error) {
+      console.error('删除失败', error)
+    }
+  },
+  {
+    manual: true,
+    onBefore: () => {
+      uni.showToast({
+        title: '删除中...',
+        icon: 'loading',
+      })
+    },
+    onError: () => {
+      uni.showToast({
+        title: '删除失败',
+        icon: 'none',
+      })
+    },
+    onSuccess: () => {
+      uni.showToast({
+        title: '删除成功',
+        icon: 'success',
+      })
+    },
+  },
+)
+
+// 组件挂载时自动加载数据（由于设置了manual: false，这里不需要手动调用refresh）
+onMounted(() => {
+  console.log('组件已挂载')
+})
+</script>
+
 <template>
   <div class="container">
     <!-- 搜索和刷新区域 -->
@@ -84,106 +185,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { onMounted, ref } from 'vue';
-
-import { useList, useRequest } from '@caikengren/uni-hooks';
-
-import { getResourceList, deleteResource } from './api';
-
-const PAGE_SIZE = 10;
-const searchKeyword = ref('');
-
-// 使用 useList hook 获取列表数据
-const {
-  data,
-  loading,
-  loadingMore,
-  isEnd,
-  loadMore,
-  reload,
-  mutate,
-} = useList(async (data) => {
-  console.log(data, 'data');
-  const page = data ? data.page : 0;
-  console.log(page, 'page---');
-  const res = await getResourceList(page + 1, PAGE_SIZE, searchKeyword.value);
-  return res.data;
-}, {
-  manual: false, // 自动加载第一页数据
-  showLoadingToast: true,
-  loadingToastMessage: '加载中',
-
-  onSuccess: (result) => {
-    console.log('加载成功', result);
-  },
-  onError: (error) => {
-    console.error('加载失败', error);
-  },
-});
-
-// 加载更多
-const handleLoadMore = () => {
-  loadMore();
-};
-
-// 搜索功能
-const handleSearch = () => {
-  reload(); // 刷新列表，重新加载第一页
-};
-
-// 刷新功能
-const handleRefresh = () => {
-  searchKeyword.value = ''; // 清空搜索关键词
-  reload(); // 刷新列表
-};
-
-// 删除列表项
-const { run: handleDelete } = useRequest(
-  async (id) => {
-    try {
-      await deleteResource(id);
-      // 使用 mutate 更新列表数据
-      if (data.value && data.value.list) {
-        const newList = data.value.list.filter(item => item.id !== id);
-        mutate({
-          ...data.value,
-          list: newList,
-        });
-      }
-    } catch (error) {
-      console.error('删除失败', error);
-    }
-  },
-  {
-    manual: true,
-    onBefore: () => {
-      uni.showToast({
-        title: '删除中...',
-        icon: 'loading',
-      });
-    },
-    onError: () => {
-      uni.showToast({
-        title: '删除失败',
-        icon: 'none',
-      });
-    },
-    onSuccess: () => {
-      uni.showToast({
-        title: '删除成功',
-        icon: 'success',
-      });
-    },
-  },
-);
-
-// 组件挂载时自动加载数据（由于设置了manual: false，这里不需要手动调用refresh）
-onMounted(() => {
-  console.log('组件已挂载');
-});
-</script>
 
 <style scoped>
 .container {
@@ -276,7 +277,6 @@ h1 {
 .item-content {
   flex: 1;
 }
-
 
 .item-content p {
   margin: 0;

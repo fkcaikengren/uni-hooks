@@ -1,3 +1,14 @@
+<script setup>
+import { useDialogStore } from '@caikengren/uni-hooks'
+
+// 通用配置信息
+const { openDialog } = useDialogStore()
+
+function openInviteDialog() {
+  openDialog('inviteDialog')
+}
+</script>
+
 <template>
   <div class="share-container">
     <div>
@@ -11,19 +22,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { useDialogStore } from '@caikengren/uni-hooks';
-
-
-// 通用配置信息
-const { openDialog } = useDialogStore();
-
-const openInviteDialog = () => {
-  openDialog('inviteDialog');
-};
-
-</script>
 
 <style scoped>
 .share-container {

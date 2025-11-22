@@ -2,14 +2,13 @@
 
 > **onPageShow**(`hook`, `options?`): `void`
 
-Defined in: uni-hooks/src/onPageShow/index.ts:26
+Defined in: [packages/uni-hooks/src/onPageShow/index.ts:24](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/onPageShow/index.ts#L24)
 
 **`Function`**
 
 页面可见生命周期钩子，可在子组件中使用。 h5中相当于window的visibilitychange事件， 小程序中相当于onShow。
 注意：不能在弹框类组件中使用（因为uni-app初始化时弹框DOM还没有生成导致onPageShow生命周期不能正确绑定）。
 解决方案：传递usePageVisibility的visibility响应式变量给其他可能被隐藏的组件。
-
  onPageShow
 
 ## Parameters

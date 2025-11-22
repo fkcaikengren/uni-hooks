@@ -1,3 +1,16 @@
+<script setup>
+import { onPageHide, onPageShow } from '@caikengren/uni-hooks'
+
+onPageHide(() => {
+  console.log('==> onPageHide')
+}, { skipFirst: false })
+
+// 页面显示时触发，首次不触发
+onPageShow(() => {
+  console.log('==> onPageShow')
+}, { skipFirst: true })
+</script>
+
 <template>
   <div class="section">
     <h3 class="section-title">
@@ -15,23 +28,7 @@
   </div>
 </template>
 
-<script setup>
-
-import { onPageHide, onPageShow } from '@caikengren/uni-hooks';
-
-onPageHide(() => {
-  console.log('==> onPageHide');
-}, { skipFirst: false });
-
-// 页面显示时触发，首次不触发
-onPageShow(() => {
-  console.log('==> onPageShow');
-}, { skipFirst: true });
-
-</script>
-
 <style scoped>
-
 .section {
   margin-bottom: 24px;
   padding: 16px;

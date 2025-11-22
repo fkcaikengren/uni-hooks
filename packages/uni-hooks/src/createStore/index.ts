@@ -1,7 +1,7 @@
-import type { AnyFn } from '@caikengren/uni-hooks-shared';
-import { effectScope } from 'vue';
+import type { AnyFn } from '@caikengren/uni-hooks-shared'
+import { effectScope } from 'vue'
 
-export type CreateStoreReturn<Fn extends AnyFn = AnyFn> = Fn;
+export type CreateStoreReturn<Fn extends AnyFn = AnyFn> = Fn
 
 /**
  * 创建一个状态存储，确保状态只被初始化一次
@@ -28,15 +28,15 @@ export type CreateStoreReturn<Fn extends AnyFn = AnyFn> = Fn;
  * const { count, increment } = useCounter();
  */
 export function createStore<Fn extends AnyFn>(stateFactory: Fn): CreateStoreReturn<Fn> {
-  let initialized = false;
-  let state: any;
-  const scope = effectScope(true);
+  let initialized = false
+  let state: any
+  const scope = effectScope(true)
 
   return ((...args: any[]) => {
     if (!initialized) {
-      state = scope.run(() => stateFactory(...args))!;
-      initialized = true;
+      state = scope.run(() => stateFactory(...args))!
+      initialized = true
     }
-    return state;
-  }) as Fn;
+    return state
+  }) as Fn
 }

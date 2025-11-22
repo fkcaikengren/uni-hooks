@@ -1,3 +1,9 @@
+<script setup>
+import { useRoute } from '@caikengren/uni-hooks'
+
+const { path, query, queryStr } = useRoute()
+</script>
+
 <template>
   <div class="section">
     <h3 class="section-title">
@@ -11,16 +17,7 @@
   </div>
 </template>
 
-<script setup>
-
-import {  useRoute } from '@caikengren/uni-hooks';
-
-
-const { path, query, queryStr } = useRoute();
-</script>
-
 <style scoped>
-
 .title {
   color: #333;
   font-size: 24px;

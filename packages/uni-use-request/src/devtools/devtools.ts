@@ -1,17 +1,17 @@
-import { setupDevtoolsPlugin } from '@vue/devtools-api';
+import type Fetch from '../Fetch'
 
-import { getRequestTagBg } from './utils';
-import devToolsStore from './store';
-import Fetch from '../Fetch';
-import { unref } from 'vue';
+import { setupDevtoolsPlugin } from '@vue/devtools-api'
+import { unref } from 'vue'
+import devToolsStore from './store'
+import { getRequestTagBg } from './utils'
 
-const pluginId = 'vue-hooks-plus';
-const pluginName = 'Vue Hooks Plus 🍭';
-const pluginLogo =  'https://raw.githubusercontent.com/InhiblabCore/vue-hooks-plus/c3b984112610ef3fb21140a0beb27b4a228fe0b3/packages/hooks/docs/public/logo.svg';
+const pluginId = 'vue-hooks-plus'
+const pluginName = 'Vue Hooks Plus 🍭'
+const pluginLogo = 'https://raw.githubusercontent.com/InhiblabCore/vue-hooks-plus/c3b984112610ef3fb21140a0beb27b4a228fe0b3/packages/hooks/docs/public/logo.svg'
 
-let currentStateId: string;
+let currentStateId: string
 
-const controlMap = new Map<symbol, string>();
+const controlMap = new Map<symbol, string>()
 
 export function setupDevtools(app: any) {
   setupDevtoolsPlugin(
@@ -45,8 +45,8 @@ export function setupDevtools(app: any) {
       api.addTimelineLayer({
         id: pluginId,
         label: pluginName,
-        color: 0xffd94c,
-      });
+        color: 0xFFD94C,
+      })
 
       api.addInspector({
         id: pluginId,
@@ -58,19 +58,19 @@ export function setupDevtools(app: any) {
             icon: 'delete',
             tooltip: 'Clear useRequest root ',
             action: () => {
-              devToolsStore.reset(currentStateId);
+              devToolsStore.reset(currentStateId)
 
-              api.sendInspectorTree(pluginId);
-              api.sendInspectorState(pluginId);
+              api.sendInspectorTree(pluginId)
+              api.sendInspectorState(pluginId)
             },
           },
         ],
-      });
+      })
 
       devToolsStore.subscribe((event: any) => {
-        devToolsStore.update(event.key, { time: event.time, type: event.type });
-        api.sendInspectorTree(pluginId);
-        api.sendInspectorState(pluginId);
+        devToolsStore.update(event.key, { time: event.time, type: event.type })
+        api.sendInspectorTree(pluginId)
+        api.sendInspectorState(pluginId)
         api.addTimelineEvent({
           layerId: pluginId,
           event: {
@@ -81,23 +81,24 @@ export function setupDevtools(app: any) {
               ...event,
             },
           },
-        });
-      });
+        })
+      })
 
       api.on.getInspectorTree((payload) => {
         if (payload.inspectorId === pluginId) {
-          controlMap.clear();
-          const settings = api.getSettings();
-          const queries = devToolsStore.getAll();
+          controlMap.clear()
+          const settings = api.getSettings()
+          const queries = devToolsStore.getAll()
           let sortedArray: [
             string,
-            { instance: Fetch<any, any[]>; requestName: string; type?: string; time?: number },
-          ][] = [];
+            { instance: Fetch<any, any[]>, requestName: string, type?: string, time?: number },
+          ][] = []
 
           if (settings.baseSort === 1) {
-            sortedArray = Array.from(queries.entries()).sort((a, b) => (b[1]?.time ?? 0) - (a[1]?.time ?? 0));
-          } else {
-            sortedArray = Array.from(queries.entries()).sort((a, b) => (a[1]?.time ?? 0) - (b[1]?.time ?? 0));
+            sortedArray = Array.from(queries.entries()).sort((a, b) => (b[1]?.time ?? 0) - (a[1]?.time ?? 0))
+          }
+          else {
+            sortedArray = Array.from(queries.entries()).sort((a, b) => (a[1]?.time ?? 0) - (b[1]?.time ?? 0))
           }
 
           const filtered = sortedArray
@@ -107,14 +108,14 @@ export function setupDevtools(app: any) {
               label: item[0],
               tags: item[1]?.type
                 ? [
-                  {
-                    label: `${item[1]?.type}`,
-                    textColor: 0xffffff,
-                    backgroundColor: getRequestTagBg(item[1]?.type),
-                  },
-                ]
+                    {
+                      label: `${item[1]?.type}`,
+                      textColor: 0xFFFFFF,
+                      backgroundColor: getRequestTagBg(item[1]?.type),
+                    },
+                  ]
                 : [],
-            }));
+            }))
 
           payload.rootNodes = [
             {
@@ -123,28 +124,28 @@ export function setupDevtools(app: any) {
               tags: [
                 {
                   label: 'Root',
-                  textColor: 0xffffff,
-                  backgroundColor: 0x42b883,
+                  textColor: 0xFFFFFF,
+                  backgroundColor: 0x42B883,
                 },
               ],
               children: filtered ?? [],
             },
-          ];
+          ]
         }
-      });
+      })
 
       api.on.getInspectorState((payload) => {
-        currentStateId = payload.nodeId;
-        let pluginsIndex = 0;
+        currentStateId = payload.nodeId
+        let pluginsIndex = 0
         if (payload.inspectorId === pluginId) {
-          const queries = devToolsStore.getAll();
+          const queries = devToolsStore.getAll()
           if (payload.nodeId) {
-            const currentSource = queries.get(payload.nodeId);
+            const currentSource = queries.get(payload.nodeId)
             if (!currentSource) {
-              return;
+              return
             }
             payload.state = {
-              Details: [
+              'Details': [
                 {
                   key: 'Key',
                   value: payload.nodeId,
@@ -160,26 +161,27 @@ export function setupDevtools(app: any) {
                 value:
                   unref(currentSource.instance.state[item as keyof typeof currentSource.instance.state]),
               })),
-              Option: Object.keys(currentSource.instance.options).map(item => ({
+              'Option': Object.keys(currentSource.instance.options).map(item => ({
                 key: item,
                 value: currentSource.instance.options[item as keyof typeof currentSource.instance.options],
               })),
-              ['Plugins 🧩']:
+              'Plugins 🧩':
                 currentSource.instance.pluginImpls?.map((_, index) => {
-                  const pluginName = currentSource?.instance?.pluginImpls?.[index]?.name;
+                  const pluginName = currentSource?.instance?.pluginImpls?.[index]?.name
                   if (!pluginName) {
-                    if (index !== pluginsIndex) pluginsIndex++;
+                    if (index !== pluginsIndex)
+                      pluginsIndex++
                   }
                   return {
                     key: pluginName ? pluginName! : `plugin ${pluginsIndex}`,
                     value: currentSource?.instance?.pluginImpls?.[index] ?? null,
-                  };
+                  }
                   // @ts-ignore
                 })?.filter(item => Object.keys(item.value).length !== 0) ?? [],
-            };
+            }
           }
         }
-      });
+      })
     },
-  );
+  )
 }

@@ -1,10 +1,8 @@
+import type { MaybeRefOrGetter, ShallowRef } from 'vue'
+import { readonly, shallowRef, toRef, watch } from 'vue'
 
-import type { MaybeRefOrGetter, ShallowRef } from 'vue';
-import { toRef, readonly, shallowRef, watch } from 'vue';
-
-
-export function usePrevious<T>(value: MaybeRefOrGetter<T>): Readonly<ShallowRef<T | undefined>>;
-export function usePrevious<T>(value: MaybeRefOrGetter<T>, initialValue: T): Readonly<ShallowRef<T>>;
+export function usePrevious<T>(value: MaybeRefOrGetter<T>): Readonly<ShallowRef<T | undefined>>
+export function usePrevious<T>(value: MaybeRefOrGetter<T>, initialValue: T): Readonly<ShallowRef<T>>
 
 /**
  * 监听 ref 变化，返回上一个值
@@ -16,15 +14,15 @@ export function usePrevious<T>(value: MaybeRefOrGetter<T>, initialValue: T): Rea
  *
  */
 export function usePrevious<T>(value: MaybeRefOrGetter<T>, initialValue?: T) {
-  const previous = shallowRef<T | undefined>(initialValue);
+  const previous = shallowRef<T | undefined>(initialValue)
 
   watch(
     toRef(value),
     (_, oldValue) => {
-      previous.value = oldValue;
+      previous.value = oldValue
     },
     { flush: 'sync' },
-  );
+  )
 
-  return readonly(previous);
+  return readonly(previous)
 }

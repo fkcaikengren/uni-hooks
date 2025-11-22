@@ -1,28 +1,28 @@
-import type { WatchCallback, WatchSource, WatchStopHandle } from 'vue';
-import type { Pausable, PausableFilterOptions } from '../utils';
-import { pausableFilter } from '../utils';
-import type { WatchWithFilterOptions } from '../watchWithFilter';
+import type { WatchCallback, WatchSource, WatchStopHandle } from 'vue'
+import type { MapOldSources, MapSources } from '../types.ts'
+import type { Pausable, PausableFilterOptions } from '../utils'
+import type { WatchWithFilterOptions } from '../watchWithFilter'
 
-import { watchWithFilter } from '../watchWithFilter';
-import type { MapOldSources, MapSources } from '../types.ts';
+import { pausableFilter } from '../utils'
+import { watchWithFilter } from '../watchWithFilter'
 
 export interface WatchPausableReturn extends Pausable {
   stop: WatchStopHandle
 }
 
-export type WatchPausableOptions<Immediate> = WatchWithFilterOptions<Immediate> & PausableFilterOptions;
+export type WatchPausableOptions<Immediate> = WatchWithFilterOptions<Immediate> & PausableFilterOptions
 
 /**
  * 可暂停的监听函数
  * 参考实现 https://vueuse.org/shared/watchPausable/
  * @function watchPausable
- * @param {WatchSource|WatchSource[]|object} source - 监听的数据源
+ * @param {WatchSource|WatchSource[]|object} sources - 监听的数据源
  * @param {Function} cb - 数据源变化时的回调函数
- * @param {Object} [options] - 配置选项
+ * @param {object} [options] - 配置选项
  * @param {boolean} [options.immediate] - 是否立即触发回调
  * @param {boolean} [options.deep] - 是否深度监听
- * @param {string} [options.initialState='active'] - 初始状态，'active'或'inactive'
- * @returns {Object} 返回控制对象，包含stop、pause、resume和isActive方法
+ * @param {string} [options.initialState] - 初始状态，'active'或'inactive'
+ * @returns {object} 返回控制对象，包含stop、pause、resume和isActive方法
  *
  * @example
  * import { watchPausable } from '@caikengren/uni-hooks'
@@ -51,18 +51,18 @@ export type WatchPausableOptions<Immediate> = WatchWithFilterOptions<Immediate> 
 export function watchPausable<T extends Readonly<WatchSource<unknown>[]>, Immediate extends Readonly<boolean> = false>(
   sources: [...T],
   cb: WatchCallback<MapSources<T>, MapOldSources<T, Immediate>>,
-  options?: WatchPausableOptions<Immediate>
-): WatchPausableReturn;
+  options?: WatchPausableOptions<Immediate>,
+): WatchPausableReturn
 export function watchPausable<T, Immediate extends Readonly<boolean> = false>(
   source: WatchSource<T>,
   cb: WatchCallback<T, Immediate extends true ? T | undefined : T>,
-  options?: WatchPausableOptions<Immediate>
-): WatchPausableReturn;
+  options?: WatchPausableOptions<Immediate>,
+): WatchPausableReturn
 export function watchPausable<T extends object, Immediate extends Readonly<boolean> = false>(
   source: T,
   cb: WatchCallback<T, Immediate extends true ? T | undefined : T>,
-  options?: WatchPausableOptions<Immediate>
-): WatchPausableReturn;
+  options?: WatchPausableOptions<Immediate>,
+): WatchPausableReturn
 export function watchPausable<Immediate extends Readonly<boolean> = false>(
   source: any,
   cb: any,
@@ -72,9 +72,9 @@ export function watchPausable<Immediate extends Readonly<boolean> = false>(
     eventFilter: filter,
     initialState = 'active',
     ...watchOptions
-  } = options;
+  } = options
 
-  const { eventFilter, pause, resume, isActive } = pausableFilter(filter, { initialState });
+  const { eventFilter, pause, resume, isActive } = pausableFilter(filter, { initialState })
   const stop = watchWithFilter(
     source,
     cb,
@@ -82,7 +82,7 @@ export function watchPausable<Immediate extends Readonly<boolean> = false>(
       ...watchOptions,
       eventFilter,
     },
-  );
+  )
 
-  return { stop, pause, resume, isActive };
+  return { stop, pause, resume, isActive }
 }

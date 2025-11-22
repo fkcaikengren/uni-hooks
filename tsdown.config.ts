@@ -1,13 +1,11 @@
 import type { Format, Options, UserConfig } from 'tsdown'
-import { globSync } from 'tinyglobby'
 import type { PackageManifest } from './scripts/utils.ts'
+import { globSync } from 'tinyglobby'
 
 const externals = [
   'vue',
-  '@dcloudio/uni-app'
+  '@dcloudio/uni-app',
 ]
-
-
 
 // Monorepo的子包统一调用该方法生成tsdown.config配置
 export function createTsDownConfig(
@@ -21,8 +19,8 @@ export function createTsDownConfig(
     return []
 
   const iifeName = 'UniHooks'
-  const iifeGlobals = { //iife 格式的全局变量映射
-    'vue': 'Vue',
+  const iifeGlobals = { // iife 格式的全局变量映射
+    vue: 'Vue',
     ...(globals || {}),
   }
 
@@ -34,7 +32,7 @@ export function createTsDownConfig(
 
   const baseConfig: UserConfig = {
     target,
-    dts,  // 生成dts文件
+    dts, // 生成dts文件
     platform: 'browser',
     external: [
       ...externals,
@@ -85,7 +83,6 @@ export function createTsDownConfig(
     }
 
     Object.assign(entry, fnEntry)
-
   }
 
   configs.push({
