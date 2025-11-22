@@ -2,7 +2,7 @@
 
 > **useDialogStore**(): [`DialogStore`](../interfaces/DialogStore.md)
 
-Defined in: [packages/uni-hooks/src/useDialog/index.ts:57](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useDialog/index.ts#L57)
+Defined in: [packages/uni-hooks/src/useDialog/index.ts:57](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useDialog/index.ts#L57)
 
 全局dialog管理仓库，管理通过useDialog注册的Dialog
  useDialogStore

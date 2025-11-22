@@ -4,7 +4,7 @@
 
 > **watchPausable**\<`T`, `Immediate`\>(`sources`, `cb`, `options?`): `WatchPausableReturn`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:562
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:557
 
 **`Function`**
 
@@ -23,7 +23,7 @@ Defined in: packages/uni-hooks-shared/dist/index.d.ts:562
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `sources` | \[`...T[]`\] | - |
+| `sources` | \[`...T[]`\] | 监听的数据源 |
 | `cb` | `WatchCallback`\<`MapSources`\<`T`\>, `MapOldSources`\<`T`, `Immediate`\>\> | 数据源变化时的回调函数 |
 | `options?` | `WatchPausableOptions`\<`Immediate`\> | 配置选项 |
 
@@ -64,7 +64,7 @@ await nextTick() // Changed to hello!
 
 > **watchPausable**\<`T`, `Immediate`\>(`source`, `cb`, `options?`): `WatchPausableReturn`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:563
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:558
 
 **`Function`**
 
@@ -83,7 +83,7 @@ Defined in: packages/uni-hooks-shared/dist/index.d.ts:563
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `source` | `WatchSource`\<`T`\> | 监听的数据源 |
+| `source` | `WatchSource`\<`T`\> | - |
 | `cb` | `WatchCallback`\<`T`, `Immediate` *extends* `true` ? `T` \| `undefined` : `T`\> | 数据源变化时的回调函数 |
 | `options?` | `WatchPausableOptions`\<`Immediate`\> | 配置选项 |
 
@@ -124,7 +124,7 @@ await nextTick() // Changed to hello!
 
 > **watchPausable**\<`T`, `Immediate`\>(`source`, `cb`, `options?`): `WatchPausableReturn`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:564
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:559
 
 **`Function`**
 
@@ -143,7 +143,7 @@ Defined in: packages/uni-hooks-shared/dist/index.d.ts:564
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `source` | `T` | 监听的数据源 |
+| `source` | `T` | - |
 | `cb` | `WatchCallback`\<`T`, `Immediate` *extends* `true` ? `T` \| `undefined` : `T`\> | 数据源变化时的回调函数 |
 | `options?` | `WatchPausableOptions`\<`Immediate`\> | 配置选项 |
 

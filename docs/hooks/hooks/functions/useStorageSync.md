@@ -37,7 +37,7 @@ data.value = { bar: 'foo' }; //此时立即存入了本地缓存，不同于useS
 
 > **useStorageSync**(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`string`\>
 
-Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:71](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorageSync/index.ts#L71)
+Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:71](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useStorageSync/index.ts#L71)
 
 ### Parameters
 
@@ -55,7 +55,7 @@ Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:71](https://github.c
 
 > **useStorageSync**(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`boolean`\>
 
-Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:76](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorageSync/index.ts#L76)
+Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:76](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useStorageSync/index.ts#L76)
 
 ### Parameters
 
@@ -73,7 +73,7 @@ Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:76](https://github.c
 
 > **useStorageSync**(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`number`\>
 
-Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:81](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorageSync/index.ts#L81)
+Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:81](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useStorageSync/index.ts#L81)
 
 ### Parameters
 
@@ -91,7 +91,7 @@ Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:81](https://github.c
 
 > **useStorageSync**\<`T`\>(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>
 
-Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:87](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorageSync/index.ts#L87)
+Defined in: [packages/uni-hooks/src/useStorageSync/index.ts:87](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useStorageSync/index.ts#L87)
 
 ### Type Parameters
 

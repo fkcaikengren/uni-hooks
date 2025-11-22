@@ -2,7 +2,7 @@
 
 > **RemovableRef**\<`T`\> = `Omit`\<`Ref`\<`T`\>, `"value"`\> & `object`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:96
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:52
 
 可空值的引用类型
 

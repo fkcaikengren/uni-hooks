@@ -2,7 +2,7 @@
 
 > **VoidFn** = () => `void`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:80
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:36
 
 Void function
 

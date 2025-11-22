@@ -2,7 +2,7 @@
 
 > **useUniInterceptor**\<`F`\>(`method`, `interceptor`): () => `void`
 
-Defined in: [packages/uni-hooks/src/useUniInterceptor/index.ts:176](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useUniInterceptor/index.ts#L176)
+Defined in: [packages/uni-hooks/src/useUniInterceptor/index.ts:176](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useUniInterceptor/index.ts#L176)
 
 **`Function`**
 

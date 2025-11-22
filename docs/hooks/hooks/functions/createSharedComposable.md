@@ -2,12 +2,11 @@
 
 > **createSharedComposable**\<`Fn$1`\>(`composable`, `clearEffect?`): `Fn$1`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:310
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:119
 
 **`Function`**
 
 创建共享的可组合函数，确保多个组件之间共享同一个状态实例
-
  createSharedComposable
 
 ## Type Parameters

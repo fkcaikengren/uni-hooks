@@ -2,7 +2,7 @@
 
 > **tryOnUnload**(`hook`, `target?`, `options?`): `Promise`\<`void`\>
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:418
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:292
 
 **`Function`**
 

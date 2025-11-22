@@ -18,7 +18,7 @@ ref 或 getter 函数
 
 > **usePrevious**\<`T`\>(`value`): `Readonly`\<`ShallowRef`\<`T` \| `undefined`\>\>
 
-Defined in: [packages/uni-hooks/src/usePrevious/index.ts:4](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/usePrevious/index.ts#L4)
+Defined in: [packages/uni-hooks/src/usePrevious/index.ts:4](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/usePrevious/index.ts#L4)
 
 ### Type Parameters
 
@@ -40,7 +40,7 @@ Defined in: [packages/uni-hooks/src/usePrevious/index.ts:4](https://github.com/f
 
 > **usePrevious**\<`T`\>(`value`, `initialValue`): `Readonly`\<`ShallowRef`\<`T`\>\>
 
-Defined in: [packages/uni-hooks/src/usePrevious/index.ts:5](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/usePrevious/index.ts#L5)
+Defined in: [packages/uni-hooks/src/usePrevious/index.ts:5](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/usePrevious/index.ts#L5)
 
 ### Type Parameters
 

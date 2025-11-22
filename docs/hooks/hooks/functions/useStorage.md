@@ -66,7 +66,7 @@ data.value = { foo: 'baz' };
 
 > **useStorage**\<`T`\>(`key`, `initialValue?`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>
 
-Defined in: [packages/uni-hooks/src/useStorage/index.ts:162](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorage/index.ts#L162)
+Defined in: [packages/uni-hooks/src/useStorage/index.ts:162](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useStorage/index.ts#L162)
 
 ### Type Parameters
 
@@ -90,7 +90,7 @@ Defined in: [packages/uni-hooks/src/useStorage/index.ts:162](https://github.com/
 
 > **useStorage**\<`T`\>(`key`, `initialValue`, `options?`): [`RemovableRef`](../type-aliases/RemovableRef.md)\<`T`\>
 
-Defined in: [packages/uni-hooks/src/useStorage/index.ts:168](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useStorage/index.ts#L168)
+Defined in: [packages/uni-hooks/src/useStorage/index.ts:168](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useStorage/index.ts#L168)
 
 ### Type Parameters
 

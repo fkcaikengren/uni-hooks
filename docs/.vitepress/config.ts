@@ -15,6 +15,7 @@ function getFunctionItems(section: 'hooks' | 'shared' | 'use-request') {
 }
 
 export default defineConfig({
+  base: '/uni-hooks/',
   title: 'uni-hooks',
   description: 'Vue hooks for uni-app',
   themeConfig: {

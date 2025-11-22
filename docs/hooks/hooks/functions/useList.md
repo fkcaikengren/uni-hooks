@@ -2,7 +2,7 @@
 
 > **useList**\<`TData`\>(`service`, `options?`): [`UseListReturn`](../interfaces/UseListReturn.md)\<`TData`\>
 
-Defined in: [packages/uni-hooks/src/useList/index.ts:216](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/useList/index.ts#L216)
+Defined in: [packages/uni-hooks/src/useList/index.ts:216](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/useList/index.ts#L216)
 
 列表数据管理 Hook，支持分页加载更多、刷新等功能
 

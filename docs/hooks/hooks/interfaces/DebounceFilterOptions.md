@@ -1,6 +1,6 @@
 # Interface: DebounceFilterOptions
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:197
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:429
 
 DebounceFilterOptions
 
@@ -10,7 +10,7 @@ DebounceFilterOptions
 
 > `optional` **maxWait**: `MaybeRefOrGetter`\<`number`\>
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:202
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:434
 
 延迟的最大时间.
 毫秒.
@@ -21,7 +21,7 @@ Defined in: packages/uni-hooks-shared/dist/index.d.ts:202
 
 > `optional` **rejectOnCancel**: `boolean`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:208
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:440
 
 当取消时，是否拒绝最后一次调用.
 

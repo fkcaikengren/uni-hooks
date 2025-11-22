@@ -2,7 +2,7 @@
 
 > **Fn**\<`Args`, `Return`\> = (...`args`) => `Return`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:88
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:44
 
 指定参数和返回值的函数类型
 

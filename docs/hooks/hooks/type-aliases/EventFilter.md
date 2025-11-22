@@ -2,7 +2,7 @@
 
 > **EventFilter**\<`Args`, `This`, `Invoke`\> = (`invoke`, `options`) => `ReturnType`\<`Invoke`\> \| `Promisify`\<`ReturnType`\<`Invoke`\>\> & `object`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:180
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:412
 
 事件拦截器类型，用于包装目标调用以实现防抖/节流/可暂停等过滤能力。
 

@@ -1,6 +1,6 @@
 # Interface: ThrottleFilterOptions
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:226
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:458
 
 ThrottleFilterOptions
 
@@ -10,7 +10,7 @@ ThrottleFilterOptions
 
 > **delay**: `MaybeRefOrGetter`\<`number`\>
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:230
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:462
 
 The maximum time allowed to be delayed before it's invoked.
 
@@ -20,7 +20,7 @@ The maximum time allowed to be delayed before it's invoked.
 
 > `optional` **leading**: `boolean`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:238
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:470
 
 Whether to invoke on the leading edge of the timeout.
 
@@ -30,7 +30,7 @@ Whether to invoke on the leading edge of the timeout.
 
 > `optional` **rejectOnCancel**: `boolean`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:242
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:474
 
 Whether to reject the last call if it's been cancel.
 
@@ -40,6 +40,6 @@ Whether to reject the last call if it's been cancel.
 
 > `optional` **trailing**: `boolean`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:234
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:466
 
 Whether to invoke on the trailing edge of the timeout.

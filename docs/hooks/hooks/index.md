@@ -28,10 +28,6 @@
 - [UseListService](type-aliases/UseListService.md)
 - [VoidFn](type-aliases/VoidFn.md)
 
-## Variables
-
-- [throttleFilter](variables/throttleFilter.md)
-
 ## Functions
 
 - [createSharedComposable](functions/createSharedComposable.md)

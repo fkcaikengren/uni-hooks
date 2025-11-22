@@ -2,7 +2,7 @@
 
 > **tryOnShow**(`hook`, `target?`, `options?`): `Promise`\<`void`\>
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:364
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:265
 
 **`Function`**
 

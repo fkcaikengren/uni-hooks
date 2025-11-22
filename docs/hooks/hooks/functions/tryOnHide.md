@@ -2,7 +2,7 @@
 
 > **tryOnHide**(`hook`, `target?`, `options?`): `Promise`\<`void`\>
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:337
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:146
 
 **`Function`**
 

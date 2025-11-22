@@ -2,7 +2,7 @@
 
 > **usePageScroll**(`options?`): `object`
 
-Defined in: [packages/uni-hooks/src/usePageScroll/index.ts:47](https://github.com/fkcaikengren/uni-hooks/blob/c71912b5e47bfa806e221a27ad2f17af810e47f9/packages/uni-hooks/src/usePageScroll/index.ts#L47)
+Defined in: [packages/uni-hooks/src/usePageScroll/index.ts:47](https://github.com/fkcaikengren/uni-hooks/blob/main/packages/uni-hooks/src/usePageScroll/index.ts#L47)
 
 页面滚动控制。仅支持在页面组件中使用（不兼容在子组件中使用）提供页面滚动控制功能，可以滚动到指定元素位置。在H5环境使用原生scrollIntoView，在小程序环境使用uni.pageScrollTo实现
 

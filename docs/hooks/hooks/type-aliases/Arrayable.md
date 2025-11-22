@@ -2,7 +2,7 @@
 
 > **Arrayable**\<`T`\> = `T`[] \| `T`
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:92
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:48
 
 可数组类型
 

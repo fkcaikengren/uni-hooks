@@ -2,7 +2,7 @@
 
 > **tryOnUnmounted**(`hook`, `target?`, `options?`): `Promise`\<`void`\>
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:471
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:319
 
 **`Function`**
 

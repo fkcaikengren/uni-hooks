@@ -2,6 +2,7 @@
   "plugin": [
     "typedoc-plugin-markdown",
   ],
+  "gitRevision": "main",
   "entryPointStrategy": "resolve",
   "excludePrivate": true,
   "excludeInternal": true,

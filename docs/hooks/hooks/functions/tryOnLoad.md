@@ -2,7 +2,7 @@
 
 > **tryOnLoad**(`hook`, `target?`, `options?`): `Promise`\<`void`\>
 
-Defined in: packages/uni-hooks-shared/dist/index.d.ts:391
+Defined in: packages/uni-hooks-shared/dist/index.d.ts:173
 
 **`Function`**
 
