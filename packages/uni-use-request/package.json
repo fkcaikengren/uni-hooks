@@ -5,11 +5,11 @@
   "packageManager": "pnpm@10.6.2",
   "description": "useRequest hook library in uni-app",
   "author": "Gavin Tang",
-  "license": "ISC",
-  "homepage": "",
+  "license": "MIT",
+  "homepage": "https://github.com/fkcaikengren/uni-hooks.git",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fkcaikengren/uni-hooks.git"
+    "url": "https://github.com/fkcaikengren/uni-hooks.git"
   },
   "bugs": {
     "url": "https://github.com/fkcaikengren/uni-hooks/issues"
@@ -30,7 +30,8 @@
   "unpkg": "./dist/index.iife.min.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "publishConfig": {
     "access": "public"

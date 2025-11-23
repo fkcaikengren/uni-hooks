@@ -2,6 +2,7 @@
   "name": "@caikengren/monorepo",
   "type": "module",
   "version": "1.1.0",
+  "license": "MIT",
   "private": true,
   "packageManager": "pnpm@10.6.2",
   "scripts": {

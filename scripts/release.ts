@@ -41,6 +41,7 @@ async function main(){
     run('git push')
     run('git branch -d release')
     run('git push origin --delete release')
+    run(`git tag -d v${version}`)
 
   } catch (e: any) {
     const code = typeof e?.status === 'number' ? e.status : 1
