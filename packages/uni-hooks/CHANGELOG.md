@@ -1,5 +1,14 @@
 # @caikengren/uni-hooks
 
+## 1.1.3
+
+### Patch Changes
+
+- 更新主页
+- Updated dependencies
+  - @caikengren/uni-hooks-shared@1.1.3
+  - @caikengren/uni-use-request@1.1.3
+
 ## 1.1.2
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @caikengren/uni-hooks-shared
 
+## 1.1.3
+
+### Patch Changes
+
+- 更新主页
+
 ## 1.1.2
 
 ### Patch Changes

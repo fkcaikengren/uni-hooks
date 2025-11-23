@@ -21,7 +21,7 @@ async function main(){
       console.error('输入版本号不符合规范')
       process.exit(0)
     }
-    const version = (answer || '').trim()
+    const version = (answer || "1.0.0").trim();
 
     pkg.version = version
     await writeFile(rootPkgUrl, `${JSON.stringify(pkg, null, 2)}\n`, 'utf8')
