@@ -13,16 +13,77 @@
       }
     },
     {
-      "path": "pages/use-request/index",
-      "style": {
-        "navigationBarTitleText": "useRequest"
-      }
-    },
-    {
       "path": "pages/demo-page-scroll/index",
       "style": {
         "navigationBarTitleText": "页面滚动"
       }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "packageUseRequest",
+      "pages": [
+        {
+          "path": "index/index",
+          "style": {
+            "navigationBarTitleText": "useRequest"
+          }
+        },
+        {
+          "path": "basic-usage/index",
+          "style": {
+            "navigationBarTitleText": "基础用法"
+          }
+        },
+        {
+          "path": "cache-swr/index",
+          "style": {
+            "navigationBarTitleText": "缓存 & SWR"
+          }
+        },
+        {
+          "path": "debounce/index",
+          "style": {
+            "navigationBarTitleText": "防抖"
+          }
+        },
+        {
+          "path": "error-retry/index",
+          "style": {
+            "navigationBarTitleText": "错误重试"
+          }
+        },
+        {
+          "path": "loading-delay/index",
+          "style": {
+            "navigationBarTitleText": "loadingDelay"
+          }
+        },
+        {
+          "path": "polling/index",
+          "style": {
+            "navigationBarTitleText": "轮询"
+          }
+        },
+        {
+          "path": "ready/index",
+          "style": {
+            "navigationBarTitleText": "Ready"
+          }
+        },
+        {
+          "path": "refresh-deps/index",
+          "style": {
+            "navigationBarTitleText": "依赖刷新"
+          }
+        },
+        {
+          "path": "throttle/index",
+          "style": {
+            "navigationBarTitleText": "节流"
+          }
+        }
+      ]
     }
   ],
   "globalStyle": {
