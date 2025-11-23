@@ -7,8 +7,9 @@ onPageHide(() => {
 
 // 页面显示时触发，首次不触发
 onPageShow(() => {
-  console.log('==> onPageShow')
+  console.log('onPageShow, 使用弹窗打开不生效')
 }, { skipFirst: true })
+
 </script>
 
 <template>

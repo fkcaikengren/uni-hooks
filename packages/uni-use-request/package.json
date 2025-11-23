@@ -30,8 +30,8 @@
   "unpkg": "./dist/index.iife.min.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist",
-    "README.md"
+    "README.md",
+    "dist"
   ],
   "publishConfig": {
     "access": "public"

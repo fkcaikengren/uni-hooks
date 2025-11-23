@@ -1,39 +1,35 @@
 <script setup lang="ts">
-import { useDialog } from '@caikengren/uni-hooks'
+import { useDialog, useDialogStore } from '@caikengren/uni-hooks'
 
-import { reactive } from 'vue'
-
-import ModuleShare from './module-share.vue'
-
-const assistShareInfo = reactive({
-  invitePostTips: '邀请好友一起来玩游戏吧！',
-  invitePostBackground: 'https://igame-10037599.file.myqcloud.com/pmdOA/pmdOA_XhE7x84Pvd3m.png',
-  inviteId: 'ILG667ed5a3ae8bc078181274c6200b3702',
-  inviteTaskId: 't_ZODxVp6Hk7at',
-  inviteTaskType: 'invitereflow',
-})
-
-const { props, openDialog } = useDialog({
-  modelValueField: 'show', // 双向绑定值
+const { props: inviteDialogProps, openDialog, closeDialog } = useDialog({
+  modelValueField: 'visible', // 双向绑定值
 }, 'inviteDialog')
 
-function handleTaskShare() {
-  openDialog()
-}
+// 在其他组件中使用useDialogStore，关闭指定弹框
+const {closeDialog: closeInviteDialog} = useDialogStore('inviteDialog')
+
 </script>
 
 <template>
   <div>
     <div class="card">
+      
       <div class="section">
-        <ModuleShare />
-      </div>
-      <div class="section">
-        <button @click="handleTaskShare">
-          任务：去邀请
+        <button @click="openDialog">
+          打开邀请弹框
         </button>
       </div>
     </div>
+    <demo-dialog
+      v-bind="inviteDialogProps"
+      title="邀请弹框"
+      @close="closeDialog"
+    >
+      <view>分享@caikengren/uni-hooks给你的朋友吧</view>
+      <button @click="()=>closeInviteDialog('inviteDialog')">
+        关闭弹框
+      </button>
+    </demo-dialog>
   </div>
 </template>
 

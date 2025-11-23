@@ -9,7 +9,7 @@
 - yarn：`yarn add @caikengren/uni-use-request`
 - pnpm：`pnpm add @caikengren/uni-use-request`
 
-## Docs 
+## Docs
 [uni-hooks文档](https://fkcaikengren.github.io/uni-hooks)
 
 ## License

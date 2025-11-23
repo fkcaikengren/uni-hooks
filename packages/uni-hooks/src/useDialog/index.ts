@@ -61,16 +61,14 @@ export const useDialogStore = createSharedComposable((): DialogStore => {
     openDialog: (name: string) => {
       if (dialogRegistry[name]) {
         dialogRegistry[name].open()
-      }
-      else {
+      } else {
         console.log(`[info]useDialogStore: ${name}未注册`)
       }
     },
     closeDialog: (name: string) => {
       if (dialogRegistry[name]) {
         dialogRegistry[name].close()
-      }
-      else {
+      } else {
         console.log(`[info]useDialogStore: ${name}未注册`)
       }
     },

@@ -61,7 +61,7 @@ export function getResourceList(page = 1, pageSize = 10, keyword = '') {
  * @param id 要删除的资源ID
  * @returns Promise
  */
-export function deleteResource(id) {
+export function deleteResource(id: string | number) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       try {
@@ -69,15 +69,15 @@ export function deleteResource(id) {
           reject({
             code: 400,
             data: null,
-            message: '缺少必要参数 id',
+            message: "缺少必要参数 id",
             success: false,
-          })
-          return
+          });
+          return;
         }
 
         // 从模拟数据中删除指定id的项
-        const initialLength = mockData.length
-        mockData = mockData.filter(item => item.id !== Number(id))
+        const initialLength = mockData.length;
+        mockData = mockData.filter((item) => item.id !== Number(id));
 
         // 检查是否成功删除
         if (mockData.length === initialLength) {
@@ -86,25 +86,24 @@ export function deleteResource(id) {
             data: null,
             message: `未找到 ID 为 ${id} 的资源`,
             success: false,
-          })
-          return
+          });
+          return;
         }
 
         resolve({
           code: 200,
           data: { success: true },
-          message: '请求成功',
+          message: "请求成功",
           success: true,
-        })
-      }
-      catch (error) {
+        });
+      } catch (error) {
         reject({
           code: 500,
           data: null,
-          message: '删除资源失败',
+          message: "删除资源失败",
           success: false,
-        })
+        });
       }
-    }, 2000) // 模拟2秒的网络延迟
-  })
+    }, 2000); // 模拟2秒的网络延迟
+  });
 }

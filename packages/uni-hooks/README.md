@@ -25,11 +25,11 @@ Vue Hooks for uni-app：轻量、类型友好、面向 uni-app 的常用 hooks �
 ## Usage
 - 在任意 `setup()` 或组合式函数中使用；支持 H5 与小程序。
 
-```ts
+```vue
 // src/pages/index.vue
 <script setup lang="ts">
+import { usePageScroll, useStorage } from '@caikengren/uni-hooks'
 import { ref } from 'vue'
-import { useStorage, usePageScroll } from '@caikengren/uni-hooks'
 
 // 响应式持久化存储（自动读写 uni storage）
 const count = useStorage('count', 0)

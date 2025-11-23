@@ -4,13 +4,12 @@
 
 作为`@caikengren/uni-hooks`的依赖库，提供封装hooks的基础能力
 
-
 ## Install
 - npm：`npm i @caikengren/uni-hooks-shared`
 - yarn：`yarn add @caikengren/uni-hooks-shared`
 - pnpm：`pnpm add @caikengren/uni-hooks-shared`
 
-## Docs 
+## Docs
 [uni-hooks文档](https://fkcaikengren.github.io/uni-hooks)
 
 ## License

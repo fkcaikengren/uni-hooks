@@ -6,7 +6,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/@caikengren/uni-hooks?label=@caikengren/uni-hooks)](https://www.npmjs.com/package/@caikengren/uni-hooks)
 [![NPM Version](https://img.shields.io/npm/v/@caikengren/uni-use-request?label=@caikengren/uni-use-request)](https://www.npmjs.com/package/@caikengren/uni-use-request)
-[![License](https://img.shields.io/badge/license-ISC-blue.svg)](./LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 [![Stars](https://img.shields.io/github/stars/fkcaikengren/uni-hooks?style=social)](https://github.com/fkcaikengren/uni-hooks)
 
 </div>
@@ -26,7 +26,6 @@
 - 插件化请求：`useRequest` 支持缓存、轮询、重试、节流、防抖、延迟 Loading、DevTools 等
 - 类型友好：全面的 `d.ts` 输出与泛型支持
 - 文档友好：内置 VitePress 文档与 Typedoc API 说明
-
 
 ## 安装
 
@@ -59,7 +58,7 @@ set(true)
 在页面中读取路由与滚动：
 
 ```ts
-import { useRoute, usePageScroll } from '@caikengren/uni-hooks'
+import { usePageScroll, useRoute } from '@caikengren/uni-hooks'
 
 const route = useRoute()
 const { y } = usePageScroll()
@@ -101,26 +100,30 @@ run()
 
 ## 开发与文档
 
+先全局安装工具 (后续可以使用ni, nr等命令)
+```bash
+npm install -g @antfu/ni
+```
+
 ```bash
 # 安装依赖
-pnpm i
+nr i
 
 # 启动 Playground（H5）
-pnpm dev:h5
+nr dev:h5
 
 # 启动 Playground（微信小程序）
-pnpm dev:mp
+nr dev:mp
 
 # 构建所有子包
-pnpm build
-# 或使用 Turbo
-turbo run build
+nr build
+
+# 基于typedoc生成文档
+nr docs:gen
 
 # 启动文档站
-pnpm docs:dev
+nr docs:dev
 
-# 构建并预览文档
-pnpm docs:build && pnpm docs:preview
 ```
 
 ## 使用指南
@@ -139,7 +142,7 @@ pnpm docs:build && pnpm docs:preview
 - `useDebounceFn` / `useThrottleFn`：防抖与节流方法
 - `onPageShow` / `onPageHide`：页面生命周期封装
 
-完整列表与 API 请见文档站与 Typedoc 生成的说明。
+完整列表与 API 请见[文档](https://fkcaikengren.github.io/uni-hooks)
 
 ## useRequest 能力
 
@@ -151,17 +154,16 @@ pnpm docs:build && pnpm docs:preview
 
 - 测试框架：`vitest`
 - 浏览器相关：`vitest-browser-vue` + `playwright`
-- 根级命令：`pnpm test`
+- 根级命令：`nr test`
 
 ## 贡献
 
-- 使用 `commitizen` 与 `cz-git` 规范提交信息：`pnpm commit`
-- 提交前建议运行 `pnpm lint` 与 `pnpm test`
+- 提交前建议运行 `nr lint` 与 `nr test`
 - 欢迎通过 Issue 或 PR 参与贡献
 
 ## 许可证
 
-ISC
+MIT
 
 ## 致谢
 

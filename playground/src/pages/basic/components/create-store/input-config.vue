@@ -9,7 +9,7 @@ const { commonInfo, updateCommonInfo } = useAppStore()
 // 计算属性，用于双向绑定
 const configName = computed({
   get: () => commonInfo.value?.configName || '',
-  set: (val) => {
+  set: (val: string) => {
     updateCommonInfo({
       ...commonInfo.value,
       configName: val,
@@ -19,7 +19,7 @@ const configName = computed({
 
 const configId = computed({
   get: () => commonInfo.value?.configId || '',
-  set: (val) => {
+  set: (val: string) => {
     updateCommonInfo({
       ...commonInfo.value,
       configId: val,

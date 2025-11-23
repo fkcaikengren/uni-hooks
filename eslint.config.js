@@ -47,8 +47,9 @@ export default antfu(
       // 允许使用 @ts-ignore（覆盖 antfu 默认的禁用策略）
       'ts/ban-ts-comment': ['error', { 'ts-ignore': false }],
       // 如果你真的想要分号 (虽然 antfu 默认是无分号的)
-      // 'style/semi': ['error', 'always'],
+      // "style/semi": ["error", "always"],
       'style/max-statements-per-line': 'off',
+      'style/brace-style': 'off',
 
       'ts/ban-types': 'off',
       'node/no-callback-literal': 'off',

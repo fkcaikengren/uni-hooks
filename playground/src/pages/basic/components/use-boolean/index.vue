@@ -18,7 +18,7 @@ const [flag, { set, toggle }] = useBoolean(true)
         </button>
         <button
           type="primary"
-          style="margin-left: 8px"
+          style="margin-top: 8px"
           @click="() => toggle()"
         >
           toggle

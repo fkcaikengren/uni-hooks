@@ -38,12 +38,12 @@ const demoTitles = {
   11: 'usePageScroll',
   12: 'useList',
   13: 'useStorage',
-}
+} as Record<number, string>
 
 function showDemo(demoId: number) {
   // 直接设置当前演示ID
   currentDemoId.value = demoId
-  currentDemoTitle.value = demoTitles[demoId]
+  currentDemoTitle.value = demoTitles[demoId] || ''
   showModal.value = true
 }
 
@@ -145,7 +145,7 @@ function navigateTo(path: string) {
       <view class="demo-item">
         <view
           class="demo-title"
-          @click="navigateTo('/views/demo-page-scroll/index')"
+          @click="navigateTo('/pages/demo-page-scroll/index')"
         >
           11. usePageScroll
         </view>

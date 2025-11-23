@@ -74,9 +74,8 @@ export function usePageScroll(options: UsePageScrollOptions = {}) {
               scrollTop: rect.top, // 使用元素的top值
               duration,
             })
-          }
-          else {
-            console.log('[info]pmd-use: usePageScroll未找到匹配的元素')
+          } else {
+            console.log('[info]usePageScroll未找到匹配的元素')
           }
         })
         .exec()

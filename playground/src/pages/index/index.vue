@@ -9,7 +9,7 @@ interface NavItem {
 
 const navList = ref<NavItem[]>([
   { title: '基础hook', desc: '', path: '/pages/basic/index' },
-  { title: '业务hook', desc: '', path: '/pages/biz/index' },
+  { title: 'useRequest', desc: '', path: '/pages/use-request/index' },
 ])
 
 function navigateTo(path: string) {
@@ -23,10 +23,7 @@ function navigateTo(path: string) {
   <view class="container">
     <view class="header">
       <text class="title">
-        pmd-use 功能演示
-      </text>
-      <text class="subtitle">
-        uni-app 兼容 H5 和小程序
+        uni-hooks Demo
       </text>
     </view>
     <view class="nav-list">
@@ -48,7 +45,7 @@ function navigateTo(path: string) {
           </text>
         </view>
         <view class="nav-arrow">
-          >
+          <view class="chevron"></view>
         </view>
       </view>
     </view>
@@ -136,7 +133,18 @@ function navigateTo(path: string) {
 }
 
 .nav-arrow {
-  font-size: 16px;
-  color: #ccc;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-arrow .chevron {
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  transform: rotate(45deg);
 }
 </style>

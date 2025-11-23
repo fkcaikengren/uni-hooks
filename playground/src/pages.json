@@ -3,7 +3,7 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "pmd-use 演示"
+        "navigationBarTitleText": "uni-hooks Demo"
       }
     },
     {
@@ -13,9 +13,9 @@
       }
     },
     {
-      "path": "pages/biz/index",
+      "path": "pages/use-request/index",
       "style": {
-        "navigationBarTitleText": "业务hooks"
+        "navigationBarTitleText": "useRequest"
       }
     },
     {
